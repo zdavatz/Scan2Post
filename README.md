@@ -2,7 +2,7 @@
 Scan a Swiss Health Insurance card and create a HTTP(S)-Post request.
 
 1. Scan2Post has to be able to register in Start-Up Objects in the Settings. 
-2. Scan2Post has to startup when the computer is started.
+2. Scan2Post has to startup when the computer is started. Scan2Post has no Gui only a preferences field.
 3. If the User inserts a Swiss Insurance Card a HTTP-Post request is send to the URL according to the settings.
 4. In the settings field you have to able to set 
  * HTTP(S) URL
@@ -12,6 +12,8 @@ Scan a Swiss Health Insurance card and create a HTTP(S)-Post request.
 5. Software has to be installed for the User.
 6. Software starts when the User logs in.
 7. The User has to be able to quit the application.
+8. When you run the application the first time then the User is asked: "Do you want to add Scan2Post to startup automatically at login?"
+9. If you click the Icon on the top bar, then you can close the Scan2Post application or access the settings, see 4.
 
 # JSON HTTP(S) Request-File
 ```
