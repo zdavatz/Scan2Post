@@ -11,6 +11,7 @@ Scan a Swiss Health Insurance card and create a HTTP(S)-Post request.
  * All the Data from the card in a JSON File.
 5. Software has to be installed for the User.
 6. Software starts when the User logs in.
+7. The User has to be able to quit the application.
 
 # JSON HTTP(S) Request-File
 ```
