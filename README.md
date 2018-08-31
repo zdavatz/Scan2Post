@@ -15,7 +15,7 @@ Scan a Swiss Health Insurance card and create a HTTP(S)-Post request.
 8. When you run the application the first time then the User is asked: "Do you want to add Scan2Post to startup automatically at login?"
 9. If you click the Icon on the top bar, then you can close the Scan2Post application or access the settings, see 4.
 
-# JSON HTTP(S) Request-File
+# JSON HTTP(S) Post-Request File
 ```
 {
 "username":"jdoe@gmail.com",
