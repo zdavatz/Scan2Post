@@ -8,3 +8,4 @@ Scan a Swiss Health Insurance card and create a HTTP-Post request.
 4.1. HTTP(S) URL
 4.2. Username
 4.3. Passwort (optional)
+4.4. All the Data from the card
