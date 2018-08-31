@@ -12,6 +12,15 @@ Scan a Swiss Health Insurance card and create a HTTP(S)-Post request.
 5. Software has to be installed for the User.
 6. Software starts when the User logs in.
 
+# JSON File
+```
+{
+"username":"jdoe@gmail.com",
+"insuranceCard":{
+"identificationData":{"firstName":"Peter","lastName":"Franken","birthDate":749178000000,"sex":1,"ssn":"7569999999410"},
+"administrationData":{"insurance":{"id":"01234","name":"TEST"},"cardNumber":"80756012340000000582","expiryDate":1404079200000}
+}}
+```
 # Use Case
 The Users Browser with the Web-Application is open. The User scans a card. Scan2Post sends all the information from the card as a HTTP-Post request to the defined URL. The data is then processed by the API and shown in the Browser.
 
