@@ -12,7 +12,7 @@ Scan a Swiss Health Insurance card and create a HTTP(S)-Post request.
 5. Software has to be installed for the User.
 6. Software starts when the User logs in.
 
-# JSON Response File
+# JSON HTTP(S) Request-File
 ```
 {
 "username":"jdoe@gmail.com",
