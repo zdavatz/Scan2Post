@@ -15,5 +15,5 @@ Scan a Swiss Health Insurance card and create a HTTP-Post request.
 # Use Case
 The Users Browser with the Web-Application is open. The User scans a card. Scan2Post sends all the information from the card as a HTTP-Post request to the defined URL. The data is then processed by the API and shown in the Browser.
 
-#License
-GPLv3.0 See License.md
+# License
+GPLv3.0 See [License](https://github.com/zdavatz/Scan2Post/blob/master/LICENSE).
