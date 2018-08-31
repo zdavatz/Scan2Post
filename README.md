@@ -16,13 +16,14 @@ Scan a Swiss Health Insurance card and create a HTTP(S)-Post request.
 ```
 {
 "username":"jdoe@gmail.com",
+"username":"Password_that_is_optional",
 "insuranceCard":{
 "identificationData":{"firstName":"Peter","lastName":"Franken","birthDate":749178000000,"sex":1,"ssn":"7569999999410"},
 "administrationData":{"insurance":{"id":"01234","name":"TEST"},"cardNumber":"80756012340000000582","expiryDate":1404079200000}
 }}
 ```
 # Use Case
-The Users Browser with the Web-Application is open. The User scans a card. Scan2Post sends all the information from the card as a HTTP-Post request to the defined URL. The data is then processed by the API and shown in the Browser.
+The Users Browser with the Web-Application is open. The User scans a card. Scan2Post sends all the information from the card as a HTTP-Post request to the defined URL. The data is then processed by the API/Server and shown in the Browser.
 
 # License
 GPLv3.0 See [License](https://github.com/zdavatz/Scan2Post/blob/master/LICENSE).
