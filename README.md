@@ -1,5 +1,5 @@
 # Scan2Post
-Scan a Swiss Health Insurance card and create a HTTP-Post request.
+Scan a Swiss Health Insurance card and create a HTTP(S)-Post request.
 
 1. Scan2Post has to be able to register in Start-Up Objects in the Settings. 
 2. Scan2Post has to startup when the computer is started.
