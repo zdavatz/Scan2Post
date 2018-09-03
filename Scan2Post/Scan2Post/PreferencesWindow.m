@@ -45,10 +45,10 @@
     [self.window orderOut:self];
 }
 
-#pragma mark - NSWindowDelegate
-
-- (void)windowWillClose:(NSNotification *)notification
-{
-    NSLog(@"%s", __FUNCTION__);
-}
+//#pragma mark - NSWindowDelegate
+//
+//- (void)windowWillClose:(NSNotification *)notification
+//{
+//    NSLog(@"%s", __FUNCTION__);
+//}
 @end

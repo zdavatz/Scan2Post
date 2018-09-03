@@ -8,17 +8,21 @@
 
 #import <Cocoa/Cocoa.h>
 #import "PreferencesWindow.h"
+#import "HealthCard.h"
 
 @interface StatusMenuController : NSObject <PreferencesWindowDelegate>
 {
     NSStatusItem *statusItem;
     NSImage *icon;
     PreferencesWindow *preferencesWindow;
+    HealthCard *healthCard;
 }
 
 @property (weak) IBOutlet NSMenu *statusMenu;
 
 - (IBAction)quitClicked:(NSMenuItem *)sender;
 - (IBAction)preferencesClicked:(NSMenuItem *)sender;
+
+- (void) newHealthCardData:(NSNotification *)notification;
 
 @end

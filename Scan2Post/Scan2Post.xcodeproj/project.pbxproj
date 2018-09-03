@@ -14,6 +14,11 @@
 		FA8F4DDE213D4BF6005A24BA /* StatusMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA8F4DDD213D4BF6005A24BA /* StatusMenuController.m */; };
 		FA8F4DE2213D555F005A24BA /* PreferencesWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = FA8F4DE0213D555F005A24BA /* PreferencesWindow.m */; };
 		FA8F4DE3213D555F005A24BA /* PreferencesWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA8F4DE1213D555F005A24BA /* PreferencesWindow.xib */; };
+		FA8F4DE9213D7609005A24BA /* SmartCard.m in Sources */ = {isa = PBXBuildFile; fileRef = FA8F4DE7213D7609005A24BA /* SmartCard.m */; };
+		FA8F4DEA213D7609005A24BA /* HealthCard.m in Sources */ = {isa = PBXBuildFile; fileRef = FA8F4DE8213D7609005A24BA /* HealthCard.m */; };
+		FA8F4DED213D77D0005A24BA /* CryptoTokenKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA8F4DEC213D77D0005A24BA /* CryptoTokenKit.framework */; };
+		FA8F4DEF213D7805005A24BA /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA8F4DEE213D7805005A24BA /* AppKit.framework */; };
+		FA8F4DF1213D7811005A24BA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA8F4DF0213D7810005A24BA /* Foundation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +35,13 @@
 		FA8F4DDF213D555F005A24BA /* PreferencesWindow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PreferencesWindow.h; sourceTree = "<group>"; };
 		FA8F4DE0213D555F005A24BA /* PreferencesWindow.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PreferencesWindow.m; sourceTree = "<group>"; };
 		FA8F4DE1213D555F005A24BA /* PreferencesWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PreferencesWindow.xib; sourceTree = "<group>"; };
+		FA8F4DE5213D7609005A24BA /* SmartCard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SmartCard.h; path = Scan2Post/card/SmartCard.h; sourceTree = SOURCE_ROOT; };
+		FA8F4DE6213D7609005A24BA /* HealthCard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HealthCard.h; path = Scan2Post/card/HealthCard.h; sourceTree = SOURCE_ROOT; };
+		FA8F4DE7213D7609005A24BA /* SmartCard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SmartCard.m; path = Scan2Post/card/SmartCard.m; sourceTree = SOURCE_ROOT; };
+		FA8F4DE8213D7609005A24BA /* HealthCard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HealthCard.m; path = Scan2Post/card/HealthCard.m; sourceTree = SOURCE_ROOT; };
+		FA8F4DEC213D77D0005A24BA /* CryptoTokenKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CryptoTokenKit.framework; path = System/Library/Frameworks/CryptoTokenKit.framework; sourceTree = SDKROOT; };
+		FA8F4DEE213D7805005A24BA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		FA8F4DF0213D7810005A24BA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,6 +49,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA8F4DF1213D7811005A24BA /* Foundation.framework in Frameworks */,
+				FA8F4DEF213D7805005A24BA /* AppKit.framework in Frameworks */,
+				FA8F4DED213D77D0005A24BA /* CryptoTokenKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -48,6 +63,7 @@
 			children = (
 				FA8F4DAA213D23CC005A24BA /* Scan2Post */,
 				FA8F4DA9213D23CC005A24BA /* Products */,
+				FA8F4DEB213D77D0005A24BA /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -62,6 +78,7 @@
 		FA8F4DAA213D23CC005A24BA /* Scan2Post */ = {
 			isa = PBXGroup;
 			children = (
+				FA8F4DE4213D75EB005A24BA /* card */,
 				FA8F4DAB213D23CC005A24BA /* AppDelegate.h */,
 				FA8F4DAC213D23CC005A24BA /* AppDelegate.m */,
 				FA8F4DAE213D23CD005A24BA /* Assets.xcassets */,
@@ -76,6 +93,28 @@
 				FA8F4DE1213D555F005A24BA /* PreferencesWindow.xib */,
 			);
 			path = Scan2Post;
+			sourceTree = "<group>";
+		};
+		FA8F4DE4213D75EB005A24BA /* card */ = {
+			isa = PBXGroup;
+			children = (
+				FA8F4DE6213D7609005A24BA /* HealthCard.h */,
+				FA8F4DE8213D7609005A24BA /* HealthCard.m */,
+				FA8F4DE5213D7609005A24BA /* SmartCard.h */,
+				FA8F4DE7213D7609005A24BA /* SmartCard.m */,
+			);
+			name = card;
+			path = "New Group";
+			sourceTree = "<group>";
+		};
+		FA8F4DEB213D77D0005A24BA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FA8F4DF0213D7810005A24BA /* Foundation.framework */,
+				FA8F4DEE213D7805005A24BA /* AppKit.framework */,
+				FA8F4DEC213D77D0005A24BA /* CryptoTokenKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -109,6 +148,11 @@
 				TargetAttributes = {
 					FA8F4DA7213D23CC005A24BA = {
 						CreatedOnToolsVersion = 9.4.1;
+						SystemCapabilities = {
+							com.apple.Sandbox = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -150,6 +194,8 @@
 			files = (
 				FA8F4DE2213D555F005A24BA /* PreferencesWindow.m in Sources */,
 				FA8F4DB5213D23CD005A24BA /* main.m in Sources */,
+				FA8F4DE9213D7609005A24BA /* SmartCard.m in Sources */,
+				FA8F4DEA213D7609005A24BA /* HealthCard.m in Sources */,
 				FA8F4DAD213D23CC005A24BA /* AppDelegate.m in Sources */,
 				FA8F4DDE213D4BF6005A24BA /* StatusMenuController.m in Sources */,
 			);
@@ -220,7 +266,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
@@ -272,7 +318,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
 			};

@@ -20,6 +20,13 @@
     
     preferencesWindow = [PreferencesWindow new];
     preferencesWindow.delegate = self;
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(newHealthCardData:)
+                                                 name:@"smartCardDataAcquired"
+                                               object:nil];
+    
+    healthCard = [[HealthCard alloc] init];
 }
 
 - (IBAction)quitClicked:(NSMenuItem *)sender
@@ -38,4 +45,12 @@
 {
     NSLog(@"%s", __FUNCTION__);
 }
+
+#pragma mark - Notifications
+
+- (void) newHealthCardData:(NSNotification *)notification
+{
+    NSLog(@"%s", __FUNCTION__);
+}
+
 @end
