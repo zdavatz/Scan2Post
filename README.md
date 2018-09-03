@@ -15,6 +15,7 @@ Scan a Swiss Health Insurance card and create a HTTP(S)-Post request.
 8. When you run the application the first time then the User is asked: "Do you want to add Scan2Post to startup automatically at login?"
 10. If you click the Icon on the top bar, then you can close the Scan2Post application or access the settings, see 4.
 11. Deployment Target is 10.8.
+12. A Reference we used: [WeatherBar](http://footle.org/WeatherBar/)
 
 # JSON HTTP(S) Post-Request File
 ```
