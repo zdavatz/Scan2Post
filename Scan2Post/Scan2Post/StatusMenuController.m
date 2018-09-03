@@ -22,7 +22,8 @@
     preferencesWindow.delegate = self;
 }
 
-- (IBAction)quitClicked:(id)sender {
+- (IBAction)quitClicked:(NSMenuItem *)sender
+{
     [[NSApplication sharedApplication] terminate:self];
 }
 
@@ -30,7 +31,6 @@
 {
     [preferencesWindow showWindow:nil];
 }
-
 
 #pragma mark - PreferencesWindowDelegate
 

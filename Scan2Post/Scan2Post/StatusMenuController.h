@@ -18,6 +18,7 @@
 
 @property (weak) IBOutlet NSMenu *statusMenu;
 
-- (IBAction)quitClicked:(id)sender;
+- (IBAction)quitClicked:(NSMenuItem *)sender;
+- (IBAction)preferencesClicked:(NSMenuItem *)sender;
 
 @end

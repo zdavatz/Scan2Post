@@ -285,7 +285,7 @@
 				CODE_SIGN_ENTITLEMENTS = Scan2Post/Scan2Post.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = 57FG4KLM28;
+				DEVELOPMENT_TEAM = 4B37356EGR;
 				INFOPLIST_FILE = Scan2Post/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -303,7 +303,7 @@
 				CODE_SIGN_ENTITLEMENTS = Scan2Post/Scan2Post.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = 57FG4KLM28;
+				DEVELOPMENT_TEAM = 4B37356EGR;
 				INFOPLIST_FILE = Scan2Post/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

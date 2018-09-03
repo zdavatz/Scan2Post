@@ -27,9 +27,13 @@
     [NSApp activateIgnoringOtherApps:TRUE];
 }
 
-#pragma mark - NSWindowDelegate
+- (IBAction)cancelClicked:(NSButton *)sender
+{
+    NSLog(@"%s", __FUNCTION__);
+    [self.window orderOut:self];
+}
 
-- (void)windowWillClose:(NSNotification *)notification
+- (IBAction)saveClicked:(NSButton *)sender
 {
     NSLog(@"%s", __FUNCTION__);
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
@@ -38,5 +42,13 @@
     [defaults setValue:self.passwordTextField.stringValue forKey:@"password"];
     
     [self.delegate preferencesDidUpdate];
+    [self.window orderOut:self];
+}
+
+#pragma mark - NSWindowDelegate
+
+- (void)windowWillClose:(NSNotification *)notification
+{
+    NSLog(@"%s", __FUNCTION__);
 }
 @end
