@@ -14,9 +14,7 @@
 
 @implementation AppDelegate
 
-- (void)applicationDidFinishLaunching:(NSNotification *)aNotification
-{
-    NSLog(@"%s", __FUNCTION__);
+- (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
 }
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification {

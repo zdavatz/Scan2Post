@@ -8,7 +8,16 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface PreferencesWindow : NSWindowController
-@property (weak) IBOutlet NSTextField *serverUrlTExtField;
+@protocol PreferencesWindowDelegate <NSObject>
+- (void)preferencesDidUpdate;
+@end
+
+@interface PreferencesWindow : NSWindowController <NSWindowDelegate>
+
+@property (nonatomic, weak) id<PreferencesWindowDelegate> delegate;
+
+@property (weak) IBOutlet NSTextField *serverUrlTextField;
+@property (weak) IBOutlet NSTextField *usernameTextField;
+@property (weak) IBOutlet NSTextField *passwordTextField;
 
 @end

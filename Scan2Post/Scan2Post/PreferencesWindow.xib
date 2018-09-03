@@ -7,7 +7,9 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="PreferencesWindow">
             <connections>
-                <outlet property="serverUrlTExtField" destination="1TQ-Da-iA7" id="fKl-rc-Job"/>
+                <outlet property="passwordTextField" destination="GEa-ht-i3w" id="2T3-Qh-jBv"/>
+                <outlet property="serverUrlTextField" destination="1TQ-Da-iA7" id="fKl-rc-Job"/>
+                <outlet property="usernameTextField" destination="9ui-gL-rRi" id="5ey-rc-Nuu"/>
                 <outlet property="window" destination="F0z-JX-Cv5" id="gIp-Ho-8D9"/>
             </connections>
         </customObject>

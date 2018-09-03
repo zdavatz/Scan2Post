@@ -15,9 +15,6 @@
         <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
         <menu id="kBX-KP-a7L">
             <items>
-                <menuItem title="Item 1" id="CsW-NC-Yl7">
-                    <modifierMask key="keyEquivalentModifierMask"/>
-                </menuItem>
                 <menuItem title="Preferences..." id="c5t-Wg-74T">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>

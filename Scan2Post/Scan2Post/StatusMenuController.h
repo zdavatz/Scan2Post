@@ -7,10 +7,9 @@
 //
 
 #import <Cocoa/Cocoa.h>
-//#import <Foundation/Foundation.h>
 #import "PreferencesWindow.h"
 
-@interface StatusMenuController : NSObject
+@interface StatusMenuController : NSObject <PreferencesWindowDelegate>
 {
     NSStatusItem *statusItem;
     NSImage *icon;

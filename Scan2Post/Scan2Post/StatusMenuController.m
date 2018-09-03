@@ -10,8 +10,8 @@
 
 @implementation StatusMenuController
 
-- (void)awakeFromNib {
-    NSLog(@"%s", __FUNCTION__);
+- (void)awakeFromNib
+{
     statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength];
     icon = [NSImage imageNamed:@"statusIcon"];
     //icon.template = TRUE; // best for dark mode
@@ -19,6 +19,7 @@
     statusItem.menu = self.statusMenu;
     
     preferencesWindow = [PreferencesWindow new];
+    preferencesWindow.delegate = self;
 }
 
 - (IBAction)quitClicked:(id)sender {
@@ -27,7 +28,14 @@
 
 - (IBAction)preferencesClicked:(NSMenuItem *)sender
 {
-    NSLog(@"%s", __FUNCTION__);
     [preferencesWindow showWindow:nil];
+}
+
+
+#pragma mark - PreferencesWindowDelegate
+
+- (void)preferencesDidUpdate
+{
+    NSLog(@"%s", __FUNCTION__);
 }
 @end
