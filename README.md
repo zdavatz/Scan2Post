@@ -16,6 +16,7 @@ Scan a Swiss Health Insurance card and create a HTTP(S)-Post request.
 10. If you click the Icon on the top bar, then you can close the Scan2Post application or access the settings, see 4.
 11. Deployment Target is 10.8.
 12. A Reference we used: [WeatherBar](http://footle.org/WeatherBar/)
+13. Copy and Pasting i.e. a URL into the settings Field should work.
 
 # JSON HTTP(S) Post-Request File
 ```
