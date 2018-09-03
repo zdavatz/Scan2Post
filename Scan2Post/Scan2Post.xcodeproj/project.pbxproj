@@ -12,6 +12,8 @@
 		FA8F4DB2213D23CD005A24BA /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA8F4DB0213D23CD005A24BA /* MainMenu.xib */; };
 		FA8F4DB5213D23CD005A24BA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FA8F4DB4213D23CD005A24BA /* main.m */; };
 		FA8F4DDE213D4BF6005A24BA /* StatusMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA8F4DDD213D4BF6005A24BA /* StatusMenuController.m */; };
+		FA8F4DE2213D555F005A24BA /* PreferencesWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = FA8F4DE0213D555F005A24BA /* PreferencesWindow.m */; };
+		FA8F4DE3213D555F005A24BA /* PreferencesWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA8F4DE1213D555F005A24BA /* PreferencesWindow.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +27,9 @@
 		FA8F4DB6213D23CD005A24BA /* Scan2Post.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Scan2Post.entitlements; sourceTree = "<group>"; };
 		FA8F4DDC213D4BF6005A24BA /* StatusMenuController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StatusMenuController.h; sourceTree = "<group>"; };
 		FA8F4DDD213D4BF6005A24BA /* StatusMenuController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StatusMenuController.m; sourceTree = "<group>"; };
+		FA8F4DDF213D555F005A24BA /* PreferencesWindow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PreferencesWindow.h; sourceTree = "<group>"; };
+		FA8F4DE0213D555F005A24BA /* PreferencesWindow.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PreferencesWindow.m; sourceTree = "<group>"; };
+		FA8F4DE1213D555F005A24BA /* PreferencesWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PreferencesWindow.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +71,9 @@
 				FA8F4DB6213D23CD005A24BA /* Scan2Post.entitlements */,
 				FA8F4DDC213D4BF6005A24BA /* StatusMenuController.h */,
 				FA8F4DDD213D4BF6005A24BA /* StatusMenuController.m */,
+				FA8F4DDF213D555F005A24BA /* PreferencesWindow.h */,
+				FA8F4DE0213D555F005A24BA /* PreferencesWindow.m */,
+				FA8F4DE1213D555F005A24BA /* PreferencesWindow.xib */,
 			);
 			path = Scan2Post;
 			sourceTree = "<group>";
@@ -128,6 +136,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA8F4DAF213D23CD005A24BA /* Assets.xcassets in Resources */,
+				FA8F4DE3213D555F005A24BA /* PreferencesWindow.xib in Resources */,
 				FA8F4DB2213D23CD005A24BA /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -139,6 +148,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA8F4DE2213D555F005A24BA /* PreferencesWindow.m in Sources */,
 				FA8F4DB5213D23CD005A24BA /* main.m in Sources */,
 				FA8F4DAD213D23CC005A24BA /* AppDelegate.m in Sources */,
 				FA8F4DDE213D4BF6005A24BA /* StatusMenuController.m in Sources */,
@@ -210,7 +220,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
@@ -262,7 +272,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
 			};

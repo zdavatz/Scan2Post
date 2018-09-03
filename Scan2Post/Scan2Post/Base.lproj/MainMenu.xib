@@ -10,7 +10,7 @@
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
-        <customObject id="-3" userLabel="Application"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customObject id="Voe-Tx-rLC" customClass="AppDelegate"/>
         <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
         <menu id="kBX-KP-a7L">
@@ -18,8 +18,11 @@
                 <menuItem title="Item 1" id="CsW-NC-Yl7">
                     <modifierMask key="keyEquivalentModifierMask"/>
                 </menuItem>
-                <menuItem title="Item 2" id="c5t-Wg-74T">
+                <menuItem title="Preferences..." id="c5t-Wg-74T">
                     <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="preferencesClicked:" target="3k4-Ua-XsQ" id="Qnp-M4-80B"/>
+                    </connections>
                 </menuItem>
                 <menuItem title="Quit" id="cl9-gC-w7o" userLabel="Quit">
                     <modifierMask key="keyEquivalentModifierMask"/>

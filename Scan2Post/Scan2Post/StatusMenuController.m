@@ -17,9 +17,17 @@
     //icon.template = TRUE; // best for dark mode
     statusItem.image = icon;
     statusItem.menu = self.statusMenu;
+    
+    preferencesWindow = [PreferencesWindow new];
 }
 
 - (IBAction)quitClicked:(id)sender {
     [[NSApplication sharedApplication] terminate:self];
+}
+
+- (IBAction)preferencesClicked:(NSMenuItem *)sender
+{
+    NSLog(@"%s", __FUNCTION__);
+    [preferencesWindow showWindow:nil];
 }
 @end

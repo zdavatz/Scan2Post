@@ -8,11 +8,13 @@
 
 #import <Cocoa/Cocoa.h>
 //#import <Foundation/Foundation.h>
+#import "PreferencesWindow.h"
 
 @interface StatusMenuController : NSObject
 {
     NSStatusItem *statusItem;
     NSImage *icon;
+    PreferencesWindow *preferencesWindow;
 }
 
 @property (weak) IBOutlet NSMenu *statusMenu;
