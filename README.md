@@ -7,13 +7,15 @@ Scan a Swiss Health Insurance card and create a HTTP(S)-Post request.
 4. In the settings field you have to able to set 
  * HTTP(S) URL
  * Username
- * Passwort (optional)
- * All the Data from the card in a JSON File.
-5. Software has to be installed for the User.
-6. Software starts when the User logs in.
-7. The User has to be able to quit the application.
+ * Password (optional)
+5. All the Data from the card in a JSON File. See sample below.
+6. Software has to be installed for the User.
+7. Software starts when the User logs in.
+8. The User has to be able to quit the application.
 8. When you run the application the first time then the User is asked: "Do you want to add Scan2Post to startup automatically at login?"
-9. If you click the Icon on the top bar, then you can close the Scan2Post application or access the settings, see 4.
+10. If you click the Icon on the top bar, then you can close the Scan2Post application or access the settings, see 4.
+11. Deployment Target is 10.8.
+12. A Reference we used: [WeatherBar](http://footle.org/WeatherBar/)
 
 # JSON HTTP(S) Post-Request File
 ```
