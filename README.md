@@ -18,8 +18,8 @@
 10. If you click the Icon on the top bar, then you can close the Scan2Post application or access the settings, see 4.
 11. Deployment Target is 10.12.
 12. A Reference we used: [WeatherBar](http://footle.org/WeatherBar/)
-13. Copy and Pasting i.e. a URL into the settings Field should work.
-14. All dates set to UNIX timestamp, with time zone set to card issung country and mmdd set to 0 (zero).
+13. Copy and Pasting via Mouse.
+14. All dates set to UNIX timestamp and mmdd set to 0 (zero).
 15. [Swiss Insurance Card Reference](https://github.com/zdavatz/amiko-osx/files/2018228/Implementierungsanleitung.fur.die.Versichertenkarte.nach.eCH-0064.der.SASIS.AG.pdf).
 
 ## JSON HTTP(S) Post-Request File
