@@ -152,27 +152,28 @@
     
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
 
-    if ([url.scheme isEqualToString:@"http"]) {
-        //[NSURLRequest setAllowsAnyHTTPSCertificate:YES forHost:[url host]];
-        
-#if 1
-        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-        NSString *username = [defaults stringForKey:@(KEY_DEFAULTS_USER)];
-        NSString *password = [defaults stringForKey:@(KEY_DEFAULTS_PASSWORD)];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *username = [defaults stringForKey:@(KEY_DEFAULTS_USER)];
+    NSString *password = [defaults stringForKey:@(KEY_DEFAULTS_PASSWORD)];
 
-        // http://www.chrisumbel.com/article/basic_authentication_iphone_cocoa_touch
-
+    if (username.length > 0 &&
+        password.length > 0 &&
+        [url.scheme isEqualToString:@"http"])
+    {
         // create a plaintext string in the format username:password
         NSString *loginString = [NSString stringWithFormat:@"%@:%@", username, password];
 
         // employ the Base64 encoding above to encode the authentication tokens
         NSData *plainData = [loginString dataUsingEncoding:NSUTF8StringEncoding];
         NSString *encodedLoginData = [plainData base64EncodedStringWithOptions:(NSDataBase64Encoding76CharacterLineLength)];
-//        [Base64 encode:[loginString dataUsingEncoding:NSUTF8StringEncoding]];
 
         NSString *authHeader = [NSString stringWithFormat:@"Basic %@", encodedLoginData];
         [request setValue:authHeader forHTTPHeaderField:@"Authorization"];
-#endif
+
+    }
+    else if ([url.scheme isEqualToString:@"https"]) {
+        // TODO: TLS authentication
+        //[NSURLRequest setAllowsAnyHTTPSCertificate:YES forHost:[url host]];
     }
 
     request.HTTPMethod = @"POST";
