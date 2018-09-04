@@ -19,8 +19,6 @@
 11. Deployment Target is 10.12.
 12. A Reference we used: [WeatherBar](http://footle.org/WeatherBar/)
 13. Copy and Pasting via Mouse.
-14. All dates set to UNIX timestamp and mmdd set to 0 (zero).
-15. [Swiss Insurance Card Reference](https://github.com/zdavatz/amiko-osx/files/2018228/Implementierungsanleitung.fur.die.Versichertenkarte.nach.eCH-0064.der.SASIS.AG.pdf).
 
 ## JSON HTTP(S) Post-Request File
 ```
@@ -32,6 +30,8 @@
 "administrationData":{"insurance":{"id":"65.92.5","name":"65.91.50"},"cardNumber":"65.93.20","expiryDate":65.94.8}
 }}
 ```
+* All dates set to UNIX timestamp and mmdd set to 0 (zero).
+* [Swiss Insurance Card Reference](https://github.com/zdavatz/amiko-osx/files/2018228/Implementierungsanleitung.fur.die.Versichertenkarte.nach.eCH-0064.der.SASIS.AG.pdf).
 ## Use Case
 The User's Browser with the Web-Application is open. The User inserts a card into the card reader. Scan2Post sends all the information from the card as a HTTP-Post request to the defined URL in a JSON File. The data is then processed by the API/Server and the Web-App can refresh with the Data that was sent via the HTTP-Post-Request.
 
