@@ -21,6 +21,7 @@
 13. Copy and Pasting i.e. a URL into the settings Field should work.
 14. SSN is the AHV/AVS Number.
 15. Birthdate is Unix Timestamp with zero hours, minutes and seconds.
+16. [Swiss Insurance Card Reference](https://github.com/zdavatz/amiko-osx/files/2018228/Implementierungsanleitung.fur.die.Versichertenkarte.nach.eCH-0064.der.SASIS.AG.pdf).
 
 ## JSON HTTP(S) Post-Request File
 ```
