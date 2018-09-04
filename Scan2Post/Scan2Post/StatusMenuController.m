@@ -54,6 +54,43 @@
     NSLog(@"%s", __FUNCTION__);
 }
 
+#pragma  mark - NSURLConnectionDelegate
+
+// the server has responded
+- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
+{
+    NSLog(@"%s", __FUNCTION__);
+    // A response has been received, this is where we initialize the instance var you created
+    // so that we can append data to it in the didReceiveData method
+    // Furthermore, this method is called each time there is a redirect so reinitializing it
+    // also serves to clear it
+    responseData = [[NSMutableData alloc] init];
+}
+
+// This can be called weveral times
+- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
+{
+    NSLog(@"%s", __FUNCTION__);
+    [responseData appendData:data];
+}
+
+- (void)connectionDidFinishLoading:(NSURLConnection *)connection
+{
+    NSLog(@"%s", __FUNCTION__);
+    // The request is complete and data has been received
+    // You can parse the stuff in your instance variable now
+}
+
+- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
+{
+    // The request has failed for some reason!
+    // Check the error var
+    NSLog(@"%s %@ %@ %@", __FUNCTION__,
+          error,
+          error.localizedDescription,
+          error.localizedFailureReason);
+}
+
 #pragma mark - Notifications
 
 - (void) newHealthCardData:(NSNotification *)notification
@@ -91,8 +128,39 @@
     NSString *jsonStr = [[NSString alloc] initWithData:jsonObject encoding:NSUTF8StringEncoding];
     NSLog(@"Line %d, JSON string:\n%@", __LINE__, jsonStr);
 
-    // TODO: send to server
-    NSString *serverURL = [defaults stringForKey:@"serverUrl"];
+    [self sendToServer:jsonStr];
 }
 
+#pragma mark -
+
+- (void) sendToServer:(NSString *)data
+{
+    NSString *serverURL = [[NSUserDefaults standardUserDefaults] stringForKey:@(KEY_DEFAULTS_SERVER)];
+    NSLog(@"%s serverURL:<%@>", __FUNCTION__, serverURL);
+
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:serverURL]];
+    request.HTTPMethod = @"POST";
+    [request setValue:@"application/xml; charset=utf-8" forHTTPHeaderField:@"Content-Type"]; // header field
+    NSLog(@"%s line %d", __FUNCTION__, __LINE__);
+    request.HTTPBody = [data dataUsingEncoding:NSUTF8StringEncoding];
+    request.timeoutInterval = 30.0;
+    
+#if 1
+    // Asynch
+    NSURLConnection *conn = [[NSURLConnection alloc] initWithRequest:request
+                                                            delegate:self];
+#else
+    // Synch
+    NSHTTPURLResponse *response;
+    NSError *error = nil;
+    NSData *data = [NSURLConnection sendSynchronousRequest:request
+                                         returningResponse:&response
+                                                     error:&error];
+    if (error == nil) {
+        NSLog(@"%s line %d", __FUNCTION__, __LINE__);
+        // Parse data here
+    }
+#endif
+    NSLog(@"%s line %d END", __FUNCTION__, __LINE__);
+}
 @end

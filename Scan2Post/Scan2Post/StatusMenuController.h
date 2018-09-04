@@ -10,13 +10,14 @@
 #import "PreferencesWindow.h"
 #import "HealthCard.h"
 
-@interface StatusMenuController : NSObject <PreferencesWindowDelegate>
+@interface StatusMenuController : NSObject <PreferencesWindowDelegate, NSURLConnectionDelegate>
 {
     NSStatusItem *statusItem;
     NSImage *icon;
     PreferencesWindow *preferencesWindow;
     HealthCard *healthCard;
     
+    NSMutableData *responseData;
 }
 
 @property (weak) IBOutlet NSMenu *statusMenu;
@@ -25,5 +26,7 @@
 - (IBAction)preferencesClicked:(NSMenuItem *)sender;
 
 - (void) newHealthCardData:(NSNotification *)notification;
+
+- (void) sendToServer:(NSString *)data;
 
 @end
