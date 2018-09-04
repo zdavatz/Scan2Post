@@ -59,7 +59,9 @@
 // the server has responded
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
 {
-    NSLog(@"%s", __FUNCTION__);
+    NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
+    NSLog(@"%s status code:%ld", __FUNCTION__, (long)[httpResponse statusCode]);
+
     // A response has been received, this is where we initialize the instance var you created
     // so that we can append data to it in the didReceiveData method
     // Furthermore, this method is called each time there is a redirect so reinitializing it
@@ -136,7 +138,7 @@
     request.HTTPBody = [data dataUsingEncoding:NSUTF8StringEncoding];
     request.timeoutInterval = 30.0;
     
-#if 1
+#if 0
     // Asynch
     NSURLConnection *conn = [[NSURLConnection alloc] initWithRequest:request
                                                             delegate:self];
@@ -144,14 +146,22 @@
     // Synch
     NSHTTPURLResponse *response;
     NSError *error = nil;
-    NSData *data = [NSURLConnection sendSynchronousRequest:request
-                                         returningResponse:&response
-                                                     error:&error];
+    NSData *dataRx = [NSURLConnection sendSynchronousRequest:request
+                                           returningResponse:&response
+                                                       error:&error];
     if (error == nil) {
-        NSLog(@"%s line %d", __FUNCTION__, __LINE__);
+#ifdef DEBUG
+        //if (response.statusCode != 200 )
+        {
+            NSLog(@"%s line %d, response:%@\n%@", __FUNCTION__,
+                  __LINE__,
+                  response,
+                  [NSHTTPURLResponse localizedStringForStatusCode:response.statusCode]);
+        }
+        NSLog(@"dataRx:%@", dataRx);
+#endif
         // Parse data here
     }
 #endif
-    NSLog(@"%s line %d END", __FUNCTION__, __LINE__);
 }
 @end
