@@ -16,12 +16,11 @@
 8. The User has to be able to quit the application.
 8. When you run the application the first time then the User is asked: "Do you want to add Scan2Post to startup automatically at login?"
 10. If you click the Icon on the top bar, then you can close the Scan2Post application or access the settings, see 4.
-11. Deployment Target is 10.8.
+11. Deployment Target is 10.12.
 12. A Reference we used: [WeatherBar](http://footle.org/WeatherBar/)
 13. Copy and Pasting i.e. a URL into the settings Field should work.
-14. SSN is the AHV/AVS Number.
-15. Birthdate set to UNIX timestamp, with time zone set to card issung country and mmdd set to 0 (zero).
-16. [Swiss Insurance Card Reference](https://github.com/zdavatz/amiko-osx/files/2018228/Implementierungsanleitung.fur.die.Versichertenkarte.nach.eCH-0064.der.SASIS.AG.pdf).
+14. All dates set to UNIX timestamp, with time zone set to card issung country and mmdd set to 0 (zero).
+15. [Swiss Insurance Card Reference](https://github.com/zdavatz/amiko-osx/files/2018228/Implementierungsanleitung.fur.die.Versichertenkarte.nach.eCH-0064.der.SASIS.AG.pdf).
 
 ## JSON HTTP(S) Post-Request File
 ```
@@ -29,8 +28,8 @@
 "username":"jdoe@gmail.com",
 "password":"Password_that_is_optional",
 "insuranceCard":{
-"identificationData":{"firstName":"Peter","lastName":"Franken","birthDate":749178000000,"sex":1,"ssn":"7569999999410"},
-"administrationData":{"insurance":{"id":"01234","name":"TEST"},"cardNumber":"80756012340000000582","expiryDate":1404079200000}
+"identificationData":{"firstName":"65.80.50","lastName":"65.80.50","birthDate":65.82.8,"sex":65.84.1,"ssn":"65.83.13"},
+"administrationData":{"insurance":{"id":"65.92.5","name":"65.91.50"},"cardNumber":"65.93.20","expiryDate":65.94.8}
 }}
 ```
 ## Use Case
