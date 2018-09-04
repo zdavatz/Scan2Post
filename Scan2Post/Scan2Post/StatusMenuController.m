@@ -93,6 +93,23 @@
           error.localizedFailureReason);
 }
 
+- (void)connection:(NSURLConnection *)connection willSendRequestForAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge
+{
+    NSLog(@"%s", __FUNCTION__);
+    if ([challenge previousFailureCount] == 0) {
+        NSLog(@"received authentication challenge");
+        NSURLCredential *newCredential = [NSURLCredential credentialWithUser:@"USER"
+                                                                    password:@"PASSWORD"
+                                                                 persistence:NSURLCredentialPersistenceForSession];
+        NSLog(@"credential created");
+        [[challenge sender] useCredential:newCredential forAuthenticationChallenge:challenge];
+        NSLog(@"responded to authentication challenge");
+    }
+    else {
+        NSLog(@"previous authentication failure");
+    }
+}
+
 #pragma mark - Notifications
 
 - (void) newHealthCardData:(NSNotification *)notification
@@ -130,18 +147,45 @@
 - (void) sendToServer:(NSString *)data
 {
     NSString *serverURL = [[NSUserDefaults standardUserDefaults] stringForKey:@(KEY_DEFAULTS_SERVER)];
-    NSLog(@"%s serverURL:<%@>", __FUNCTION__, serverURL);
+    NSURL *url = [NSURL URLWithString:serverURL];
+    NSLog(@"serverURL:<%@>\nscheme:%@", serverURL, url.scheme);
+    
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
 
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:serverURL]];
+    if ([url.scheme isEqualToString:@"http"]) {
+        //[NSURLRequest setAllowsAnyHTTPSCertificate:YES forHost:[url host]];
+        
+#if 1
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        NSString *username = [defaults stringForKey:@(KEY_DEFAULTS_USER)];
+        NSString *password = [defaults stringForKey:@(KEY_DEFAULTS_PASSWORD)];
+
+        // http://www.chrisumbel.com/article/basic_authentication_iphone_cocoa_touch
+
+        // create a plaintext string in the format username:password
+        NSString *loginString = [NSString stringWithFormat:@"%@:%@", username, password];
+
+        // employ the Base64 encoding above to encode the authentication tokens
+        NSData *plainData = [loginString dataUsingEncoding:NSUTF8StringEncoding];
+        NSString *encodedLoginData = [plainData base64EncodedStringWithOptions:(NSDataBase64Encoding76CharacterLineLength)];
+//        [Base64 encode:[loginString dataUsingEncoding:NSUTF8StringEncoding]];
+
+        NSString *authHeader = [NSString stringWithFormat:@"Basic %@", encodedLoginData];
+        [request setValue:authHeader forHTTPHeaderField:@"Authorization"];
+#endif
+    }
+
     request.HTTPMethod = @"POST";
     [request setValue:@"application/json; charset=utf-8" forHTTPHeaderField:@"Content-Type"]; // header field
     request.HTTPBody = [data dataUsingEncoding:NSUTF8StringEncoding];
     request.timeoutInterval = 30.0;
+    NSLog(@"request header:%@", request.allHTTPHeaderFields);
     
 #if 0
     // Asynch
     NSURLConnection *conn = [[NSURLConnection alloc] initWithRequest:request
                                                             delegate:self];
+    [conn start];
 #else
     // Synch
     NSHTTPURLResponse *response;
@@ -151,6 +195,7 @@
                                                        error:&error];
     if (error == nil) {
 #ifdef DEBUG
+        // 405 unsupported method POST
         //if (response.statusCode != 200 )
         {
             NSLog(@"%s line %d, response:%@\n%@", __FUNCTION__,
@@ -158,7 +203,8 @@
                   response,
                   [NSHTTPURLResponse localizedStringForStatusCode:response.statusCode]);
         }
-        NSLog(@"dataRx:%@", dataRx);
+        NSString * dataStr =[[NSString alloc] initWithData:dataRx encoding:NSUTF8StringEncoding];
+        NSLog(@"dataRx:\n%@\n<%@>", dataRx, dataStr);
 #endif
         // Parse data here
     }
