@@ -132,8 +132,7 @@
 
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:serverURL]];
     request.HTTPMethod = @"POST";
-    [request setValue:@"application/xml; charset=utf-8" forHTTPHeaderField:@"Content-Type"]; // header field
-    NSLog(@"%s line %d", __FUNCTION__, __LINE__);
+    [request setValue:@"application/json; charset=utf-8" forHTTPHeaderField:@"Content-Type"]; // header field
     request.HTTPBody = [data dataUsingEncoding:NSUTF8StringEncoding];
     request.timeoutInterval = 30.0;
     
