@@ -98,21 +98,13 @@
     NSDictionary *cardDict = [notification object];
     NSLog(@"%s NSNotification:%@", __FUNCTION__, cardDict);
 
-    NSDictionary *idDict = [cardDict valueForKeyPath:@"id"];
-    NSDictionary *adminDict = [cardDict valueForKeyPath:@"admin"];
-
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 
     // Prepare JSON object
     NSDictionary *jsonDict = [NSDictionary dictionaryWithObjectsAndKeys:
                               [defaults stringForKey:@(KEY_DEFAULTS_USER)], @(KEY_JSON_USER),
                               [defaults stringForKey:@(KEY_DEFAULTS_PASSWORD)], @(KEY_JSON_PASSWORD),
-#if true
                               cardDict, @(KEY_JSON_CARD),
-#else
-                              idDict, @(KEY_JSON_CARD_ID),
-                              adminDict, @(KEY_JSON_CARD_ADMIN),
-#endif
                               nil];
 #ifdef DEBUG
     NSLog(@"Line %d, NSDictionary:\n%@", __LINE__, jsonDict);

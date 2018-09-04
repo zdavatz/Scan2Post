@@ -77,13 +77,13 @@
             break;
             
         case 0x91: // UTF8InternationalString
-            s = [[NSString alloc] initWithData:value encoding:NSUTF8StringEncoding];
-            NSLog(@"name Of The Institution <%@>", s);
+            institutionName = [[NSString alloc] initWithData:value encoding:NSUTF8StringEncoding];
+            NSLog(@"name Of The Institution <%@>", institutionName);
             break;
             
         case 0x92:  // NUMERIC STRING
-            s = [[NSString alloc] initWithData:value encoding:NSUTF8StringEncoding];
-            NSLog(@"identificationNumber Of The Institution <%@>", s);
+            institutionID = [[NSString alloc] initWithData:value encoding:NSUTF8StringEncoding];
+            NSLog(@"identificationNumber Of The Institution <%@>", institutionID);
             break;
             
         case 0x93: // UTF8InternationalString
@@ -205,21 +205,26 @@
               [self parseCardData:replyData];
               
               NSDictionary *idData = [NSDictionary dictionaryWithObjectsAndKeys:
-                                           self->givenName,    KEY_CARD_NAME,
-                                           self->familyName,   KEY_CARD_SURNAME,
-                                           self->birthDate,    KEY_CARD_BIRTHDATE,
+                                           self->givenName,    @(KEY_CARD_NAME),
+                                           self->familyName,   @(KEY_CARD_SURNAME),
+                                           self->birthDate,    @(KEY_CARD_BIRTHDATE),
 #ifdef WITH_GENDER_AS_STRING
-                                           self->gender,       KEY_CARD_GENDER,
+                                           self->gender,       @(KEY_CARD_GENDER),
 #else
-                                           [NSNumber numberWithInt:self->sexEnum], KEY_CARD_GENDER,
+                                           [NSNumber numberWithInt:self->sexEnum], @(KEY_CARD_GENDER),
 #endif
-                                           self->cardHolderID, KEY_CARD_AVS,
+                                           self->cardHolderID, @(KEY_CARD_AVS),
                                         nil];
 
+              NSDictionary *institution = [NSDictionary dictionaryWithObjectsAndKeys:
+                                         self->institutionID, @(KEY_JSON_CARD_ADMIN_INS_ID),
+                                         self->institutionName, @(KEY_JSON_CARD_ADMIN_INS_NAME),
+                                         nil];
+
               NSDictionary *adminData = [NSDictionary dictionaryWithObjectsAndKeys:
-                                         self->expiryDate, KEY_CARD_EXPIRY,
-                                         self->insuredPersonNumber, KEY_CARD_NUMBER,
-                                         // TODO: insurance
+                                         self->expiryDate, @(KEY_CARD_EXPIRY),
+                                         self->insuredPersonNumber, @(KEY_CARD_NUMBER),
+                                         institution, @(KEY_JSON_CARD_ADMIN_INS),
                                          nil];
               
               // We are required to split it into identification and administration data

@@ -9,14 +9,14 @@
 #import "SmartCard.h"
 
 ////////////////////////////////////////////////////////////////////////////////
-#define KEY_CARD_NAME        @"firstName"    // KEY_AMK_PAT_NAME in AmiKo
-#define KEY_CARD_SURNAME     @"lastName"     // KEY_AMK_PAT_SURNAME
-#define KEY_CARD_BIRTHDATE   @"birthDate"    // KEY_AMK_PAT_BIRTHDATE
-#define KEY_CARD_GENDER      @"sex"          // KEY_AMK_PAT_GENDER
-#define KEY_CARD_AVS         @"ssn"          // not in AmiKo
+#define KEY_CARD_NAME           "firstName"    // KEY_AMK_PAT_NAME in AmiKo
+#define KEY_CARD_SURNAME        "lastName"     // KEY_AMK_PAT_SURNAME
+#define KEY_CARD_BIRTHDATE      "birthDate"    // KEY_AMK_PAT_BIRTHDATE
+#define KEY_CARD_GENDER         "sex"          // KEY_AMK_PAT_GENDER
+#define KEY_CARD_AVS            "ssn"          // not in AmiKo
 
-#define KEY_CARD_EXPIRY      @"expiryDate"    // not in AmiKo
-#define KEY_CARD_NUMBER      @"cardNumber"    // not in AmiKo
+#define KEY_CARD_EXPIRY         "expiryDate"    // not in AmiKo
+#define KEY_CARD_NUMBER         "cardNumber"    // not in AmiKo
 
 ////////////////////////////////////////////////////////////////////////////////
 #define KEY_JSON_USER           "username"
@@ -24,6 +24,9 @@
 #define KEY_JSON_CARD           "insuranceCard"
 #define KEY_JSON_CARD_ID        "identificationData"
 #define KEY_JSON_CARD_ADMIN     "administrativeData"
+#define KEY_JSON_CARD_ADMIN_INS         "insurance"
+#define KEY_JSON_CARD_ADMIN_INS_ID      "id"
+#define KEY_JSON_CARD_ADMIN_INS_NAME    "name"
 
 ////////////////////////////////////////////////////////////////////////////////
 //#define WITH_GENDER_AS_STRING
@@ -42,6 +45,8 @@
 
     NSString *expiryDate;
     NSString *insuredPersonNumber;
+    NSString *institutionID;
+    NSString *institutionName;
 }
 
 - (uint8_t) parseTLV:(NSData *)data;
