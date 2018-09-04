@@ -8,6 +8,10 @@
 
 #import <Cocoa/Cocoa.h>
 
+#define KEY_DEFAULTS_SERVER         "serverUrl"
+#define KEY_DEFAULTS_USER           "username"
+#define KEY_DEFAULTS_PASSWORD       "password"
+
 @protocol PreferencesWindowDelegate <NSObject>
 - (void)preferencesDidUpdate;
 @end

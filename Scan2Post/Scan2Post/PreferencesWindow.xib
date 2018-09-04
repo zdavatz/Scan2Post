@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14113" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
+        <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14113"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -59,6 +60,9 @@
                             <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
+                        <connections>
+                            <binding destination="E6I-We-mlV" name="value" keyPath="values.serverUrl" id="JbM-Yx-w2Z"/>
+                        </connections>
                     </textField>
                     <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9ui-gL-rRi" userLabel="Username Text Field">
                         <rect key="frame" x="136" y="160" width="324" height="22"/>
@@ -68,6 +72,9 @@
                             <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
+                        <connections>
+                            <binding destination="E6I-We-mlV" name="value" keyPath="values.username" id="m6D-b7-Oqz"/>
+                        </connections>
                     </textField>
                     <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GEa-ht-i3w" userLabel="Password Text Field">
                         <rect key="frame" x="136" y="120" width="324" height="22"/>
@@ -77,6 +84,9 @@
                             <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
+                        <connections>
+                            <binding destination="E6I-We-mlV" name="value" keyPath="values.password" id="Dgq-ph-l1E"/>
+                        </connections>
                     </textField>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="h7d-D3-28B">
                         <rect key="frame" x="391" y="13" width="70" height="32"/>
@@ -110,5 +120,6 @@ Gw
             </connections>
             <point key="canvasLocation" x="153" y="158"/>
         </window>
+        <userDefaultsController representsSharedInstance="YES" id="E6I-We-mlV"/>
     </objects>
 </document>

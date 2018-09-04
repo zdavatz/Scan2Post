@@ -16,6 +16,7 @@
     NSImage *icon;
     PreferencesWindow *preferencesWindow;
     HealthCard *healthCard;
+    
 }
 
 @property (weak) IBOutlet NSMenu *statusMenu;

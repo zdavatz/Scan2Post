@@ -37,9 +37,9 @@
 {
     NSLog(@"%s", __FUNCTION__);
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setValue:self.serverUrlTextField.stringValue forKey:@"serverUrl"];
-    [defaults setValue:self.usernameTextField.stringValue forKey:@"username"];
-    [defaults setValue:self.passwordTextField.stringValue forKey:@"password"];
+    [defaults setValue:self.serverUrlTextField.stringValue forKey:@(KEY_DEFAULTS_SERVER)];
+    [defaults setValue:self.usernameTextField.stringValue forKey:@(KEY_DEFAULTS_USER)];
+    [defaults setValue:self.passwordTextField.stringValue forKey:@(KEY_DEFAULTS_PASSWORD)];
     
     [self.delegate preferencesDidUpdate];
     [self.window orderOut:self];

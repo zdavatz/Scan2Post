@@ -9,11 +9,6 @@
 #import <Cocoa/Cocoa.h>
 #import "HealthCard.h"
 
-#define KEY_AMK_PAT_NAME        @"given_name"
-#define KEY_AMK_PAT_SURNAME     @"family_name"
-#define KEY_AMK_PAT_BIRTHDATE   @"birth_date"
-#define KEY_AMK_PAT_GENDER      @"gender"
-
 @implementation HealthCard
 
 - (uint8_t) parseTLV:(NSData *)data
@@ -47,6 +42,7 @@
             [dateFormat setDateFormat:@"yyyymmdd"]; // convert from this
             NSDate *dob = [dateFormat dateFromString:s];
             
+            // TODO: UNIX time-stamp
             [dateFormat setDateFormat:@"dd.mm.yyyy"];   // to this
             birthDate = [dateFormat stringFromDate:dob];
             //NSLog(@"DOB dd.mm.yyyy <%@>", birthDate);
@@ -54,11 +50,12 @@
             break;
             
         case 0x83:  // UTF8InternationalString
-            s = [[NSString alloc] initWithData:value encoding:NSUTF8StringEncoding];
-            NSLog(@"Card holder ID <%@>", s);
+            cardHolderID = [[NSString alloc] initWithData:value encoding:NSUTF8StringEncoding];
+            NSLog(@"Card holder ID <%@>", cardHolderID);
             break;
             
         case 0x84:  // ENUMERATED
+#ifdef WITH_GENDER_AS_STRING
         {
             uint8_t sexEnum = *(uint8_t *)[value bytes];
             NSLog(@"Sex %d (1=male, 2=female, 0=not known, 9=not appl.)", sexEnum);
@@ -69,6 +66,9 @@
             else
                 gender = @"";
         }
+#else
+            sexEnum = *(uint8_t *)[value bytes];
+#endif
             break;
             
         case 0x90: // UTF8InternationalString
@@ -87,13 +87,14 @@
             break;
             
         case 0x93: // UTF8InternationalString
-            s = [[NSString alloc] initWithData:value encoding:NSUTF8StringEncoding];
-            NSLog(@"Insured Person Number <%@>", s);
+            insuredPersonNumber = [[NSString alloc] initWithData:value encoding:NSUTF8StringEncoding];
+            NSLog(@"Insured Person Number <%@>", insuredPersonNumber);
             break;
             
         case 0x94:  // NUMERIC STRING
-            s = [[NSString alloc] initWithData:value encoding:NSUTF8StringEncoding];
-            NSLog(@"ExpiryDate yyyymmdd <%@>", s);
+            // TODO: UNIX time-stamp
+            expiryDate = [[NSString alloc] initWithData:value encoding:NSUTF8StringEncoding];
+            NSLog(@"ExpiryDate yyyymmdd <%@>", expiryDate);
             break;
             
         default:
@@ -203,15 +204,31 @@
 //            NSLog(@"Serial:  %@", replyData);
               [self parseCardData:replyData];
               
-              NSDictionary *patientDict = [NSDictionary dictionaryWithObjectsAndKeys:
-                                        familyName, KEY_AMK_PAT_SURNAME,
-                                        givenName,  KEY_AMK_PAT_NAME,
-                                        birthDate,  KEY_AMK_PAT_BIRTHDATE,
-                                        gender,     KEY_AMK_PAT_GENDER,
+              NSDictionary *idData = [NSDictionary dictionaryWithObjectsAndKeys:
+                                           self->givenName,    KEY_CARD_NAME,
+                                           self->familyName,   KEY_CARD_SURNAME,
+                                           self->birthDate,    KEY_CARD_BIRTHDATE,
+#ifdef WITH_GENDER_AS_STRING
+                                           self->gender,       KEY_CARD_GENDER,
+#else
+                                           [NSNumber numberWithInt:self->sexEnum], KEY_CARD_GENDER,
+#endif
+                                           self->cardHolderID, KEY_CARD_AVS,
                                         nil];
+
+              NSDictionary *adminData = [NSDictionary dictionaryWithObjectsAndKeys:
+                                         self->expiryDate, KEY_CARD_EXPIRY,
+                                         self->insuredPersonNumber, KEY_CARD_NUMBER,
+                                         // TODO: insurance
+                                         nil];
+              
+              // We are required to split it into identification and administration data
+              NSMutableDictionary *cardData = [NSMutableDictionary dictionary];
+              cardData[@(KEY_JSON_CARD_ID)] = idData;
+              cardData[@(KEY_JSON_CARD_ADMIN)] = adminData;
               
               [[NSNotificationCenter defaultCenter] postNotificationName:@"smartCardDataAcquired"
-                                                                  object:patientDict];
+                                                                  object:cardData];
           }
      ];
 }
