@@ -1,7 +1,8 @@
 # Scan2Post
-Scan a Swiss Health Insurance card and create a HTTP(S)-Post request.
-Supported Scanner is [PX-8935-919](http://www.xystec.info/USB-Chipkartenleser-HBCI-faehig-Smart-Car-PX-8935-919.shtml) from Xystec.
+* Scan a Swiss Health Insurance card and create a HTTP(S)-Post request.
+* Supported Scanner is [PX-8935-919](http://www.xystec.info/USB-Chipkartenleser-HBCI-faehig-Smart-Car-PX-8935-919.shtml) from Xystec.
 
+# Use Cases
 1. Scan2Post has to be able to register in Start-Up Objects in the Settings. 
 2. Scan2Post has to startup when the computer is started. Scan2Post has no Gui only a preferences field.
 3. If the User inserts a Swiss Insurance Card a HTTP-Post request is send to the URL according to the settings.
