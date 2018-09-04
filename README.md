@@ -16,7 +16,7 @@
 8. The User has to be able to quit the application.
 8. When you run the application the first time then the User is asked: "Do you want to add Scan2Post to startup automatically at login?"
 10. If you click the Icon on the top bar, then you can close the Scan2Post application or access the settings, see 4.
-11. Deployment Target is 10.8.
+11. Deployment Target is 10.12.
 12. A Reference we used: [WeatherBar](http://footle.org/WeatherBar/)
 13. Copy and Pasting i.e. a URL into the settings Field should work.
 14. SSN is the AHV/AVS Number.
