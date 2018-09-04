@@ -2,7 +2,7 @@
 * Scan a Swiss Health Insurance card and create a HTTP(S)-Post request.
 * Supported Scanner is [PX-8935-919](http://www.xystec.info/USB-Chipkartenleser-HBCI-faehig-Smart-Car-PX-8935-919.shtml) from Xystec.
 
-# Use Cases
+## Features
 1. Scan2Post has to be able to register in Start-Up Objects in the Settings. 
 2. Scan2Post has to startup when the computer is started. Scan2Post has no Gui only a preferences field.
 3. If the User inserts a Swiss Insurance Card a HTTP-Post request is send to the URL according to the settings.
@@ -20,7 +20,7 @@
 12. A Reference we used: [WeatherBar](http://footle.org/WeatherBar/)
 13. Copy and Pasting i.e. a URL into the settings Field should work.
 
-# JSON HTTP(S) Post-Request File
+## JSON HTTP(S) Post-Request File
 ```
 {
 "username":"jdoe@gmail.com",
@@ -30,7 +30,7 @@
 "administrationData":{"insurance":{"id":"01234","name":"TEST"},"cardNumber":"80756012340000000582","expiryDate":1404079200000}
 }}
 ```
-# Use Case
+## Use Case
 The User's Browser with the Web-Application is open. The User inserts a card into the card reader. Scan2Post sends all the information from the card as a HTTP-Post request to the defined URL in a JSON File. The data is then processed by the API/Server and the Web-App can refresh with the Data that was sent via the HTTP-Post-Request.
 
 # License
