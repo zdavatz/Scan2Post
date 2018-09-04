@@ -191,11 +191,12 @@
     // Synch
     NSHTTPURLResponse *response;
     NSError *error = nil;
+#if 0
     NSData *dataRx = [NSURLConnection sendSynchronousRequest:request
                                            returningResponse:&response
                                                        error:&error];
     if (error == nil) {
-#ifdef DEBUG
+    #ifdef DEBUG
         // 405 unsupported method POST
         //if (response.statusCode != 200 )
         {
@@ -206,9 +207,33 @@
         }
         NSString * dataStr =[[NSString alloc] initWithData:dataRx encoding:NSUTF8StringEncoding];
         NSLog(@"dataRx:\n%@\n<%@>", dataRx, dataStr);
-#endif
-        // Parse data here
+    #endif
     }
+#else
+    // https://www.raywenderlich.com/2392-cookbook-using-nsurlsession
+    NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
+    NSURLSession *session = [NSURLSession sessionWithConfiguration:config];
+    
+    NSURLSessionUploadTask *uploadTask =
+    [session uploadTaskWithRequest:request
+                          fromData:[data dataUsingEncoding:NSUTF8StringEncoding]
+                 completionHandler:^(NSData *dataRx, NSURLResponse *response, NSError *error) {
+        
+                     NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
+                     // Handle reponse
+                     //if (response.statusCode != 200 )
+                     {
+                         NSLog(@"%s line %d, response:%@\n%@", __FUNCTION__,
+                               __LINE__,
+                               response,
+                               [NSHTTPURLResponse localizedStringForStatusCode:httpResponse.statusCode]);
+                     }
+                     NSString * dataStr =[[NSString alloc] initWithData:dataRx encoding:NSUTF8StringEncoding];
+                     NSLog(@"dataRx:\n%@\n<%@>", dataRx, dataStr);
+    }];
+    [uploadTask resume];
+#endif
+
 #endif
 }
 @end
