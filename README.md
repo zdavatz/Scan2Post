@@ -20,7 +20,7 @@
 12. A Reference we used: [WeatherBar](http://footle.org/WeatherBar/)
 13. Copy and Pasting i.e. a URL into the settings Field should work.
 14. SSN is the AHV/AVS Number.
-15. Birthdate is Unix Timestamp.
+15. Birthdate is Unix Timestamp with zero hours, minutes and seconds.
 
 ## JSON HTTP(S) Post-Request File
 ```
