@@ -29,8 +29,8 @@
 "username":"jdoe@gmail.com",
 "password":"Password_that_is_optional",
 "insuranceCard":{
-"identificationData":{"firstName":"Peter","lastName":"Franken","birthDate":749178000000,"sex":1,"ssn":"7569999999410"},
-"administrationData":{"insurance":{"id":"01234","name":"TEST"},"cardNumber":"80756012340000000582","expiryDate":1404079200000}
+"identificationData":{"firstName":"65.80.50","lastName":"65.80.50","birthDate":65.82.8,"sex":65.84.1,"ssn":"65.83.13"},
+"administrationData":{"insurance":{"id":"65.92.5","name":"65.91.50"},"cardNumber":"65.93.20","expiryDate":65.94.8}
 }}
 ```
 ## Use Case
