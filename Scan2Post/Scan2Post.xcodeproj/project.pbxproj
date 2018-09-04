@@ -337,7 +337,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.bettar.it.Scan2Post;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ywesee.scan2post;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -355,7 +355,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.bettar.it.Scan2Post;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ywesee.scan2post;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
