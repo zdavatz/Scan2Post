@@ -8,6 +8,8 @@
 
 #import "StatusMenuController.h"
 
+//#define WITH_COMMS_AUTHENTICATION
+
 @implementation StatusMenuController
 
 - (void)awakeFromNib
@@ -148,10 +150,9 @@
 {
     NSString *serverURL = [[NSUserDefaults standardUserDefaults] stringForKey:@(KEY_DEFAULTS_SERVER)];
     NSURL *url = [NSURL URLWithString:serverURL];
-    NSLog(@"serverURL:<%@>\nscheme:%@", serverURL, url.scheme);
-    
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
 
+#ifdef WITH_COMMS_AUTHENTICATION
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSString *username = [defaults stringForKey:@(KEY_DEFAULTS_USER)];
     NSString *password = [defaults stringForKey:@(KEY_DEFAULTS_PASSWORD)];
@@ -175,12 +176,17 @@
         // TODO: TLS authentication
         //[NSURLRequest setAllowsAnyHTTPSCertificate:YES forHost:[url host]];
     }
+#endif
 
     request.HTTPMethod = @"POST";
-    [request setValue:@"application/json; charset=utf-8" forHTTPHeaderField:@"Content-Type"]; // header field
+    [request setValue:@"application/json; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
     request.HTTPBody = [data dataUsingEncoding:NSUTF8StringEncoding];
     request.timeoutInterval = 30.0;
+    
+#ifdef DEBUG
+    NSLog(@"serverURL:<%@>\nscheme:%@", serverURL, url.scheme);
     NSLog(@"request header:%@", request.allHTTPHeaderFields);
+#endif
     
 #if 0
     // Asynch
@@ -189,27 +195,26 @@
     [conn start];
 #else
     // Synch
-    NSHTTPURLResponse *response;
-    NSError *error = nil;
-#if 0
-    NSData *dataRx = [NSURLConnection sendSynchronousRequest:request
-                                           returningResponse:&response
-                                                       error:&error];
-    if (error == nil) {
-    #ifdef DEBUG
-        // 405 unsupported method POST
-        //if (response.statusCode != 200 )
-        {
-            NSLog(@"%s line %d, response:%@\n%@", __FUNCTION__,
-                  __LINE__,
-                  response,
-                  [NSHTTPURLResponse localizedStringForStatusCode:response.statusCode]);
-        }
-        NSString * dataStr =[[NSString alloc] initWithData:dataRx encoding:NSUTF8StringEncoding];
-        NSLog(@"dataRx:\n%@\n<%@>", dataRx, dataStr);
-    #endif
-    }
-#else
+  #if 0
+//    NSHTTPURLResponse *response;
+//    NSError *error = nil;
+//    NSData *dataRx = [NSURLConnection sendSynchronousRequest:request
+//                                           returningResponse:&response
+//                                                       error:&error];
+//    if (error == nil) {
+//    #ifdef DEBUG
+//        //if (response.statusCode != 200 )
+//        {
+//            NSLog(@"%s line %d, response:%@\n%@", __FUNCTION__,
+//                  __LINE__,
+//                  response,
+//                  [NSHTTPURLResponse localizedStringForStatusCode:response.statusCode]);
+//        }
+//        NSString * dataStr =[[NSString alloc] initWithData:dataRx encoding:NSUTF8StringEncoding];
+//        NSLog(@"dataRx:\n%@\n<%@>", dataRx, dataStr);
+//    #endif
+//    }
+  #else
     // https://www.raywenderlich.com/2392-cookbook-using-nsurlsession
     NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
     NSURLSession *session = [NSURLSession sessionWithConfiguration:config];
@@ -219,21 +224,33 @@
                           fromData:[data dataUsingEncoding:NSUTF8StringEncoding]
                  completionHandler:^(NSData *dataRx, NSURLResponse *response, NSError *error) {
         
-                     NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
-                     // Handle reponse
-                     //if (response.statusCode != 200 )
-                     {
-                         NSLog(@"%s line %d, response:%@\n%@", __FUNCTION__,
-                               __LINE__,
-                               response,
-                               [NSHTTPURLResponse localizedStringForStatusCode:httpResponse.statusCode]);
-                     }
-                     NSString * dataStr =[[NSString alloc] initWithData:dataRx encoding:NSUTF8StringEncoding];
-                     NSLog(@"dataRx:\n%@\n<%@>", dataRx, dataStr);
-    }];
-    [uploadTask resume];
+                     if (error) {
+                         // No response from the server
+#ifdef DEBUG
+                         NSLog(@"%@", error);
+#else
+                         NSLog(@"%@", error.localizedDescription);
 #endif
+                     }
+                     else {
+                         // There was some response from the server
+                         NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
+                         if (httpResponse.statusCode != 200 ) {
+#ifdef DEBUG
+                             NSLog(@"%@", response);
+#endif
+                             NSLog(@"%@", [NSHTTPURLResponse localizedStringForStatusCode:httpResponse.statusCode]);
+                         }
+                         
+                         if (dataRx.length > 0) {
+                             NSString * dataStr =[[NSString alloc] initWithData:dataRx encoding:NSUTF8StringEncoding];
+                             NSLog(@"dataRx:\n%@\n%@", dataRx, dataStr);
+                         }
+                     }
+                 }];
 
+    [uploadTask resume];
+  #endif
 #endif
 }
 @end
