@@ -30,20 +30,34 @@
 
 ////////////////////////////////////////////////////////////////////////////////
 //#define WITH_GENDER_AS_STRING
+//#define WITH_EXPIRY_DATE_AS_STRING
+//#define WITH_BIRTH_DATE_AS_STRING
 
 @interface HealthCard : SmartCard
 {
     NSString *familyName;
     NSString *givenName;
+
+#ifdef WITH_BIRTH_DATE_AS_STRING
     NSString *birthDate;
+#else
+    int birthDate;
+#endif
+
 #ifdef WITH_GENDER_AS_STRING
     NSString *gender;
 #else
     uint8_t sexEnum;
 #endif
+
     NSString *cardHolderID; // AVS or SSN
 
+#ifdef WITH_EXPIRY_DATE_AS_STRING
     NSString *expiryDate;
+#else
+    int expiryDate;
+#endif
+
     NSString *insuredPersonNumber;
     NSString *institutionID;
     NSString *institutionName;

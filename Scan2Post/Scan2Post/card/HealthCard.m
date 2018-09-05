@@ -36,16 +36,21 @@
         case 0x82:  // NUMERIC STRING
         {
             s = [[NSString alloc] initWithData:value encoding:NSUTF8StringEncoding];
-            NSLog(@"DOB yyyymmdd <%@>", s);
+            NSLog(@"DOB yyyyMMdd <%@>", s);
             NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
 
-            [dateFormat setDateFormat:@"yyyymmdd"]; // convert from this
+            [dateFormat setDateFormat:@"yyyyMMdd"]; // convert from this
             NSDate *dob = [dateFormat dateFromString:s];
             
-            // TODO: UNIX time-stamp
-            [dateFormat setDateFormat:@"dd.mm.yyyy"];   // to this
+#ifdef WITH_BIRTH_DATE_AS_STRING
+            [dateFormat setDateFormat:@"dd.MM.yyyy"];   // to this
             birthDate = [dateFormat stringFromDate:dob];
             //NSLog(@"DOB dd.mm.yyyy <%@>", birthDate);
+#else
+            // UNIX time-stamp
+            birthDate = (int)[dob timeIntervalSince1970];
+            //NSLog(@"DOB time stamp:%i", birthDate);
+#endif
         }
             break;
             
@@ -92,9 +97,23 @@
             break;
             
         case 0x94:  // NUMERIC STRING
-            // TODO: UNIX time-stamp
+#ifdef WITH_EXPIRY_DATE_AS_STRING
             expiryDate = [[NSString alloc] initWithData:value encoding:NSUTF8StringEncoding];
-            NSLog(@"ExpiryDate yyyymmdd <%@>", expiryDate);
+            NSLog(@"ExpiryDate yyyyMMdd <%@>", expiryDate);
+#else
+            {
+            // UNIX time-stamp
+            s = [[NSString alloc] initWithData:value encoding:NSUTF8StringEncoding];
+            //NSLog(@"ExpiryDate yyyyMMdd <%@>", s);
+
+            NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+            [dateFormat setDateFormat:@"yyyyMMdd"]; // convert from this
+            NSDate *ed = [dateFormat dateFromString:s];
+
+            expiryDate = (int)[ed timeIntervalSince1970];
+            //NSLog(@"ExpiryDate time stamp:%i", expiryDate);
+            }
+#endif
             break;
             
         default:
@@ -207,7 +226,13 @@
               NSDictionary *idData = [NSDictionary dictionaryWithObjectsAndKeys:
                                            self->givenName,    @(KEY_CARD_NAME),
                                            self->familyName,   @(KEY_CARD_SURNAME),
+
+#ifdef WITH_BIRTH_DATE_AS_STRING
                                            self->birthDate,    @(KEY_CARD_BIRTHDATE),
+#else
+                                           [NSNumber numberWithInt:self->birthDate], @(KEY_CARD_BIRTHDATE),
+#endif
+
 #ifdef WITH_GENDER_AS_STRING
                                            self->gender,       @(KEY_CARD_GENDER),
 #else
@@ -222,7 +247,11 @@
                                          nil];
 
               NSDictionary *adminData = [NSDictionary dictionaryWithObjectsAndKeys:
+#ifdef WITH_EXPIRY_DATE_AS_STRING
                                          self->expiryDate, @(KEY_CARD_EXPIRY),
+#else
+                                         [NSNumber numberWithInt:self->expiryDate], @(KEY_CARD_EXPIRY),
+#endif
                                          self->insuredPersonNumber, @(KEY_CARD_NUMBER),
                                          institution, @(KEY_JSON_CARD_ADMIN_INS),
                                          nil];
