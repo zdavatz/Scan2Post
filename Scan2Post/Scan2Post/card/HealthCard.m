@@ -11,6 +11,7 @@
 
 @interface HealthCard ()
 - (NSDate *) stringToDate:(NSString *)dateString;
+- (int) stringToUnixTimeStamp:(NSString *)dateString;
 @end
 
 @implementation HealthCard
@@ -19,9 +20,15 @@
 {
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
     [dateFormat setTimeZone:[NSTimeZone systemTimeZone]];
-    [dateFormat setDateFormat:@"yyyyMMdd"];
+    [dateFormat setDateFormat:@"yyyyMMdd"]; // "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
 
     return [dateFormat dateFromString:dateString];
+}
+
+- (int) stringToUnixTimeStamp:(NSString *)dateString
+{
+    NSDate *ed = [self stringToDate:dateString];
+    return (int)[ed timeIntervalSince1970];
 }
 
 - (uint8_t) parseTLV:(NSData *)data
@@ -47,21 +54,22 @@
             break;
             
         case 0x82:  // NUMERIC STRING
-        {
             s = [[NSString alloc] initWithData:value encoding:NSUTF8StringEncoding];
             //NSLog(@"DOB yyyyMMdd <%@>", s);
-            NSDate *dob = [self stringToDate:s];
             
 #ifdef WITH_BIRTH_DATE_AS_STRING
-            [dateFormat setDateFormat:@"dd.MM.yyyy"];   // to this
-            birthDate = [dateFormat stringFromDate:dob];
-            //NSLog(@"DOB dd.mm.yyyy <%@>", birthDate);
+            {
+                NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+                [dateFormat setTimeZone:[NSTimeZone systemTimeZone]];
+                [dateFormat setDateFormat:@"dd.MM.yyyy"];   // convert to this format
+
+                NSDate *dob = [self stringToDate:s];
+                birthDate = [dateFormat stringFromDate:dob];
+                //NSLog(@"DOB dd.mm.yyyy <%@>", birthDate);
+            }
 #else
-            // UNIX time-stamp
-            birthDate = (int)[dob timeIntervalSince1970];
-            //NSLog(@"DOB time stamp:%i", birthDate);
+            birthDate = [self stringToUnixTimeStamp:s];
 #endif
-        }
             break;
             
         case 0x83:  // UTF8InternationalString
@@ -109,15 +117,11 @@
         case 0x94:  // NUMERIC STRING
 #ifdef WITH_EXPIRY_DATE_AS_STRING
             expiryDate = [[NSString alloc] initWithData:value encoding:NSUTF8StringEncoding];
-            NSLog(@"ExpiryDate yyyyMMdd <%@>", expiryDate);
+            //NSLog(@"ExpiryDate yyyyMMdd <%@>", expiryDate);
 #else
-            {
-                // UNIX time-stamp
-                s = [[NSString alloc] initWithData:value encoding:NSUTF8StringEncoding];
-                NSDate *ed = [self stringToDate:s];
-                expiryDate = (int)[ed timeIntervalSince1970];
-                //NSLog(@"ExpiryDate time stamp:%i", expiryDate);
-            }
+            s = [[NSString alloc] initWithData:value encoding:NSUTF8StringEncoding];
+            expiryDate = [self stringToUnixTimeStamp:s];
+            //NSLog(@"ExpiryDate time stamp:%i", expiryDate);
 #endif
             break;
             
