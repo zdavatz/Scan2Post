@@ -33,6 +33,8 @@
 1. All dates set to UNIX timestamp and mmdd set to 0 (zero).
 2. [Swiss Insurance Card Reference](https://github.com/zdavatz/amiko-osx/files/2018228/Implementierungsanleitung.fur.die.Versichertenkarte.nach.eCH-0064.der.SASIS.AG.pdf).
 3. [HTTP Server useful for testing](https://gist.github.com/dtchepak/13b53eef9dc6b65ae1ad)
+4. Password can be used for Server-Side Authentication.
+
 ## Use Case
 The User's Browser with the Web-Application is open. The User inserts a card into the card reader. Scan2Post sends all the information from the card as a HTTP-Post request to the defined URL in a JSON File. The data is then processed by the API/Server and the Web-App can refresh with the Data that was sent via the HTTP-Post-Request.
 
