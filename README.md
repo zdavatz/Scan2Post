@@ -42,10 +42,10 @@ The User's Browser with the Web-Application is open. The User inserts a card int
 GPLv3.0 See [License](https://github.com/zdavatz/Scan2Post/blob/master/LICENSE).
 
 # Contact
-Zeno Davatz
-ywesee GmbH
-zdavatz at ywesee dot com
-043
+ Zeno Davatz
+ ywesee GmbH
+ zdavatz at ywesee dot com
+ +41 43 540 05 50
 
 # Copyright
 ©ywesee GmbH, all rights reserved.
