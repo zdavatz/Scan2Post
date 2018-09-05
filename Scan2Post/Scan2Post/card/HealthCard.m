@@ -9,7 +9,20 @@
 #import <Cocoa/Cocoa.h>
 #import "HealthCard.h"
 
+@interface HealthCard ()
+- (NSDate *) stringToDate:(NSString *)dateString;
+@end
+
 @implementation HealthCard
+
+- (NSDate *) stringToDate:(NSString *)dateString
+{
+    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+    [dateFormat setTimeZone:[NSTimeZone systemTimeZone]];
+    [dateFormat setDateFormat:@"yyyyMMdd"];
+
+    return [dateFormat dateFromString:dateString];
+}
 
 - (uint8_t) parseTLV:(NSData *)data
 {
@@ -36,11 +49,8 @@
         case 0x82:  // NUMERIC STRING
         {
             s = [[NSString alloc] initWithData:value encoding:NSUTF8StringEncoding];
-            NSLog(@"DOB yyyyMMdd <%@>", s);
-            NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
-
-            [dateFormat setDateFormat:@"yyyyMMdd"]; // convert from this
-            NSDate *dob = [dateFormat dateFromString:s];
+            //NSLog(@"DOB yyyyMMdd <%@>", s);
+            NSDate *dob = [self stringToDate:s];
             
 #ifdef WITH_BIRTH_DATE_AS_STRING
             [dateFormat setDateFormat:@"dd.MM.yyyy"];   // to this
@@ -102,16 +112,11 @@
             NSLog(@"ExpiryDate yyyyMMdd <%@>", expiryDate);
 #else
             {
-            // UNIX time-stamp
-            s = [[NSString alloc] initWithData:value encoding:NSUTF8StringEncoding];
-            //NSLog(@"ExpiryDate yyyyMMdd <%@>", s);
-
-            NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
-            [dateFormat setDateFormat:@"yyyyMMdd"]; // convert from this
-            NSDate *ed = [dateFormat dateFromString:s];
-
-            expiryDate = (int)[ed timeIntervalSince1970];
-            //NSLog(@"ExpiryDate time stamp:%i", expiryDate);
+                // UNIX time-stamp
+                s = [[NSString alloc] initWithData:value encoding:NSUTF8StringEncoding];
+                NSDate *ed = [self stringToDate:s];
+                expiryDate = (int)[ed timeIntervalSince1970];
+                //NSLog(@"ExpiryDate time stamp:%i", expiryDate);
             }
 #endif
             break;
