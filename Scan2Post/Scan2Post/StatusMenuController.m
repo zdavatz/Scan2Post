@@ -7,6 +7,7 @@
 //
 
 #import "StatusMenuController.h"
+#import <ServiceManagement/ServiceManagement.h>
 
 //#define WITH_COMMS_AUTHENTICATION
 
@@ -31,6 +32,8 @@
     healthCard = [[HealthCard alloc] init];
 }
 
+#pragma mark - Actions
+
 - (IBAction)quitClicked:(NSMenuItem *)sender
 {
     [[NSApplication sharedApplication] terminate:self];
@@ -53,7 +56,12 @@
 
 - (void)preferencesDidUpdate
 {
-    NSLog(@"%s", __FUNCTION__);
+    BOOL state = [[NSUserDefaults standardUserDefaults] boolForKey:@"launchAtLogin"];  // updated via bindings
+    NSLog(@"%s, launch at login: %d", __FUNCTION__, state);
+    if (!SMLoginItemSetEnabled((__bridge CFStringRef)@"com.ywesee.Scan2Post-Helper", state))
+    {
+        NSLog(@"Login Item Was Not Successful");
+    }
 }
 
 #pragma  mark - NSURLConnectionDelegate

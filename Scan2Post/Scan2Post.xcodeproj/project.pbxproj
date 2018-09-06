@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FA55361C2141512E00BFE918 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FA55361B2141512E00BFE918 /* AppDelegate.m */; };
+		FA55361E2141513000BFE918 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA55361D2141513000BFE918 /* Assets.xcassets */; };
+		FA5536212141513000BFE918 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA55361F2141513000BFE918 /* MainMenu.xib */; };
+		FA5536242141513000BFE918 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FA5536232141513000BFE918 /* main.m */; };
+		FA55362A2141517A00BFE918 /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA5536292141517A00BFE918 /* ServiceManagement.framework */; };
+		FA55362C2141532900BFE918 /* Scan2Post Helper.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = FA5536182141512E00BFE918 /* Scan2Post Helper.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		FA8F4DAD213D23CC005A24BA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FA8F4DAC213D23CC005A24BA /* AppDelegate.m */; };
 		FA8F4DAF213D23CD005A24BA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA8F4DAE213D23CD005A24BA /* Assets.xcassets */; };
 		FA8F4DB2213D23CD005A24BA /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA8F4DB0213D23CD005A24BA /* MainMenu.xib */; };
@@ -19,9 +25,33 @@
 		FA8F4DED213D77D0005A24BA /* CryptoTokenKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA8F4DEC213D77D0005A24BA /* CryptoTokenKit.framework */; };
 		FA8F4DEF213D7805005A24BA /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA8F4DEE213D7805005A24BA /* AppKit.framework */; };
 		FA8F4DF1213D7811005A24BA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA8F4DF0213D7810005A24BA /* Foundation.framework */; };
+		FAADC39A214161AA002D2AE3 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA8F4DEE213D7805005A24BA /* AppKit.framework */; };
+		FAADC39B214161CC002D2AE3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA8F4DF0213D7810005A24BA /* Foundation.framework */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		FA55362B214152F400BFE918 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = Contents/Library/LoginItems;
+			dstSubfolderSpec = 1;
+			files = (
+				FA55362C2141532900BFE918 /* Scan2Post Helper.app in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		FA5536182141512E00BFE918 /* Scan2Post Helper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Scan2Post Helper.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA55361A2141512E00BFE918 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		FA55361B2141512E00BFE918 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		FA55361D2141513000BFE918 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		FA5536202141513000BFE918 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		FA5536222141513000BFE918 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FA5536232141513000BFE918 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		FA5536252141513000BFE918 /* Scan2Post_Helper.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Scan2Post_Helper.entitlements; sourceTree = "<group>"; };
+		FA5536292141517A00BFE918 /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = System/Library/Frameworks/ServiceManagement.framework; sourceTree = SDKROOT; };
 		FA8F4DA8213D23CC005A24BA /* Scan2Post.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Scan2Post.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA8F4DAB213D23CC005A24BA /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		FA8F4DAC213D23CC005A24BA /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -45,10 +75,20 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		FA5536152141512E00BFE918 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FAADC39A214161AA002D2AE3 /* AppKit.framework in Frameworks */,
+				FAADC39B214161CC002D2AE3 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		FA8F4DA5213D23CC005A24BA /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA55362A2141517A00BFE918 /* ServiceManagement.framework in Frameworks */,
 				FA8F4DF1213D7811005A24BA /* Foundation.framework in Frameworks */,
 				FA8F4DEF213D7805005A24BA /* AppKit.framework in Frameworks */,
 				FA8F4DED213D77D0005A24BA /* CryptoTokenKit.framework in Frameworks */,
@@ -58,10 +98,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FA5536192141512E00BFE918 /* Scan2Post Helper */ = {
+			isa = PBXGroup;
+			children = (
+				FA55361A2141512E00BFE918 /* AppDelegate.h */,
+				FA55361B2141512E00BFE918 /* AppDelegate.m */,
+				FA55361D2141513000BFE918 /* Assets.xcassets */,
+				FA55361F2141513000BFE918 /* MainMenu.xib */,
+				FA5536222141513000BFE918 /* Info.plist */,
+				FA5536232141513000BFE918 /* main.m */,
+				FA5536252141513000BFE918 /* Scan2Post_Helper.entitlements */,
+			);
+			path = "Scan2Post Helper";
+			sourceTree = "<group>";
+		};
 		FA8F4D9F213D23CC005A24BA = {
 			isa = PBXGroup;
 			children = (
 				FA8F4DAA213D23CC005A24BA /* Scan2Post */,
+				FA5536192141512E00BFE918 /* Scan2Post Helper */,
 				FA8F4DA9213D23CC005A24BA /* Products */,
 				FA8F4DEB213D77D0005A24BA /* Frameworks */,
 			);
@@ -71,6 +126,7 @@
 			isa = PBXGroup;
 			children = (
 				FA8F4DA8213D23CC005A24BA /* Scan2Post.app */,
+				FA5536182141512E00BFE918 /* Scan2Post Helper.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -110,6 +166,7 @@
 		FA8F4DEB213D77D0005A24BA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				FA5536292141517A00BFE918 /* ServiceManagement.framework */,
 				FA8F4DF0213D7810005A24BA /* Foundation.framework */,
 				FA8F4DEE213D7805005A24BA /* AppKit.framework */,
 				FA8F4DEC213D77D0005A24BA /* CryptoTokenKit.framework */,
@@ -120,6 +177,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		FA5536172141512E00BFE918 /* Scan2Post Helper */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FA5536282141513000BFE918 /* Build configuration list for PBXNativeTarget "Scan2Post Helper" */;
+			buildPhases = (
+				FA5536142141512E00BFE918 /* Sources */,
+				FA5536152141512E00BFE918 /* Frameworks */,
+				FA5536162141512E00BFE918 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Scan2Post Helper";
+			productName = "Scan2Post Helper";
+			productReference = FA5536182141512E00BFE918 /* Scan2Post Helper.app */;
+			productType = "com.apple.product-type.application";
+		};
 		FA8F4DA7213D23CC005A24BA /* Scan2Post */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = FA8F4DB9213D23CD005A24BA /* Build configuration list for PBXNativeTarget "Scan2Post" */;
@@ -127,6 +201,7 @@
 				FA8F4DA4213D23CC005A24BA /* Sources */,
 				FA8F4DA5213D23CC005A24BA /* Frameworks */,
 				FA8F4DA6213D23CC005A24BA /* Resources */,
+				FA55362B214152F400BFE918 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -146,6 +221,9 @@
 				LastUpgradeCheck = 0940;
 				ORGANIZATIONNAME = "Alex Bettarini";
 				TargetAttributes = {
+					FA5536172141512E00BFE918 = {
+						CreatedOnToolsVersion = 9.4.1;
+					};
 					FA8F4DA7213D23CC005A24BA = {
 						CreatedOnToolsVersion = 9.4.1;
 						SystemCapabilities = {
@@ -170,11 +248,21 @@
 			projectRoot = "";
 			targets = (
 				FA8F4DA7213D23CC005A24BA /* Scan2Post */,
+				FA5536172141512E00BFE918 /* Scan2Post Helper */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		FA5536162141512E00BFE918 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FA55361E2141513000BFE918 /* Assets.xcassets in Resources */,
+				FA5536212141513000BFE918 /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		FA8F4DA6213D23CC005A24BA /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -188,6 +276,15 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		FA5536142141512E00BFE918 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FA5536242141513000BFE918 /* main.m in Sources */,
+				FA55361C2141512E00BFE918 /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		FA8F4DA4213D23CC005A24BA /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -204,6 +301,14 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		FA55361F2141513000BFE918 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FA5536202141513000BFE918 /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
 		FA8F4DB0213D23CD005A24BA /* MainMenu.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -215,6 +320,44 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		FA5536262141513000BFE918 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Scan2Post Helper/Scan2Post_Helper.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 4B37356EGR;
+				INFOPLIST_FILE = "Scan2Post Helper/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ywesee.Scan2Post-Helper";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		FA5536272141513000BFE918 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Scan2Post Helper/Scan2Post_Helper.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 4B37356EGR;
+				INFOPLIST_FILE = "Scan2Post Helper/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ywesee.Scan2Post-Helper";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		FA8F4DB7213D23CD005A24BA /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -363,6 +506,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		FA5536282141513000BFE918 /* Build configuration list for PBXNativeTarget "Scan2Post Helper" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FA5536262141513000BFE918 /* Debug */,
+				FA5536272141513000BFE918 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		FA8F4DA3213D23CC005A24BA /* Build configuration list for PBXProject "Scan2Post" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

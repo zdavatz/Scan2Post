@@ -24,7 +24,6 @@
 @property (weak) IBOutlet NSTextField *usernameTextField;
 @property (weak) IBOutlet NSTextField *passwordTextField;
 
-- (IBAction)cancelClicked:(NSButton *)sender;
 - (IBAction)saveClicked:(NSButton *)sender;
 
 @end

@@ -183,8 +183,8 @@
         
         if (slot.state == TKSmartCardSlotStateValidCard)
         {
-            TKSmartCardATRInterfaceGroup * iface = [slot.ATR interfaceGroupForProtocol:TKSmartCardProtocolT1];
 #ifdef DEBUG
+            TKSmartCardATRInterfaceGroup * iface = [slot.ATR interfaceGroupForProtocol:TKSmartCardProtocolT1];
             NSLog(@"  atr:   %@", slot.ATR);
             NSLog(@"  atr bytes:   %@", slot.ATR.bytes);
             NSLog(@"Iface for T1: %@", iface);

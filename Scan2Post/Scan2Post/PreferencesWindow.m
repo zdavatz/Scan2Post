@@ -27,19 +27,18 @@
     [NSApp activateIgnoringOtherApps:TRUE];
 }
 
-- (IBAction)cancelClicked:(NSButton *)sender
-{
-    NSLog(@"%s", __FUNCTION__);
-    [self.window orderOut:self];
-}
+#pragma mark - Actions
 
 - (IBAction)saveClicked:(NSButton *)sender
 {
     NSLog(@"%s", __FUNCTION__);
+
+#if 0   // now done via bindings
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setValue:self.serverUrlTextField.stringValue forKey:@(KEY_DEFAULTS_SERVER)];
     [defaults setValue:self.usernameTextField.stringValue forKey:@(KEY_DEFAULTS_USER)];
     [defaults setValue:self.passwordTextField.stringValue forKey:@(KEY_DEFAULTS_PASSWORD)];
+#endif
     
     [self.delegate preferencesDidUpdate];
     [self.window orderOut:self];
