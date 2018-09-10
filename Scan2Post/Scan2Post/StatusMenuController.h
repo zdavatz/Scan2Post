@@ -10,7 +10,7 @@
 #import "PreferencesWindow.h"
 #import "HealthCard.h"
 
-@interface StatusMenuController : NSObject <PreferencesWindowDelegate, NSURLConnectionDelegate>
+@interface StatusMenuController : NSObject <PreferencesWindowDelegate>
 {
     NSStatusItem *statusItem;
     NSImage *icon;

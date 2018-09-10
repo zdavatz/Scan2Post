@@ -64,62 +64,6 @@
     }
 }
 
-#pragma  mark - NSURLConnectionDelegate
-
-// the server has responded
-- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
-{
-    NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
-    NSLog(@"%s status code:%ld", __FUNCTION__, (long)[httpResponse statusCode]);
-
-    // A response has been received, this is where we initialize the instance var you created
-    // so that we can append data to it in the didReceiveData method
-    // Furthermore, this method is called each time there is a redirect so reinitializing it
-    // also serves to clear it
-    responseData = [[NSMutableData alloc] init];
-}
-
-// This can be called weveral times
-- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
-{
-    NSLog(@"%s", __FUNCTION__);
-    [responseData appendData:data];
-}
-
-- (void)connectionDidFinishLoading:(NSURLConnection *)connection
-{
-    NSLog(@"%s", __FUNCTION__);
-    // The request is complete and data has been received
-    // You can parse the stuff in your instance variable now
-}
-
-- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
-{
-    // The request has failed for some reason!
-    // Check the error var
-    NSLog(@"%s %@ %@ %@", __FUNCTION__,
-          error,
-          error.localizedDescription,
-          error.localizedFailureReason);
-}
-
-- (void)connection:(NSURLConnection *)connection willSendRequestForAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge
-{
-    NSLog(@"%s", __FUNCTION__);
-    if ([challenge previousFailureCount] == 0) {
-        NSLog(@"received authentication challenge");
-        NSURLCredential *newCredential = [NSURLCredential credentialWithUser:@"USER"
-                                                                    password:@"PASSWORD"
-                                                                 persistence:NSURLCredentialPersistenceForSession];
-        NSLog(@"credential created");
-        [[challenge sender] useCredential:newCredential forAuthenticationChallenge:challenge];
-        NSLog(@"responded to authentication challenge");
-    }
-    else {
-        NSLog(@"previous authentication failure");
-    }
-}
-
 #pragma mark - Notifications
 
 - (void) newHealthCardData:(NSNotification *)notification
@@ -196,34 +140,6 @@
     NSLog(@"request header:%@", request.allHTTPHeaderFields);
 #endif
     
-#if 0
-    // Asynch
-    NSURLConnection *conn = [[NSURLConnection alloc] initWithRequest:request
-                                                            delegate:self];
-    [conn start];
-#else
-    // Synch
-  #if 0
-//    NSHTTPURLResponse *response;
-//    NSError *error = nil;
-//    NSData *dataRx = [NSURLConnection sendSynchronousRequest:request
-//                                           returningResponse:&response
-//                                                       error:&error];
-//    if (error == nil) {
-//    #ifdef DEBUG
-//        //if (response.statusCode != 200 )
-//        {
-//            NSLog(@"%s line %d, response:%@\n%@", __FUNCTION__,
-//                  __LINE__,
-//                  response,
-//                  [NSHTTPURLResponse localizedStringForStatusCode:response.statusCode]);
-//        }
-//        NSString * dataStr =[[NSString alloc] initWithData:dataRx encoding:NSUTF8StringEncoding];
-//        NSLog(@"dataRx:\n%@\n<%@>", dataRx, dataStr);
-//    #endif
-//    }
-  #else
-    // https://www.raywenderlich.com/2392-cookbook-using-nsurlsession
     NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
     NSURLSession *session = [NSURLSession sessionWithConfiguration:config];
     
@@ -258,7 +174,5 @@
                  }];
 
     [uploadTask resume];
-  #endif
-#endif
 }
 @end
