@@ -81,17 +81,17 @@
                               nil];
 #ifdef DEBUG
     NSLog(@"Line %d, NSDictionary:\n%@", __LINE__, jsonDict);
+    NSJSONWritingOptions opt = NSJSONWritingPrettyPrinted;
+#else
+    NSJSONWritingOptions opt = 0; // Compacted without whitespace
 #endif
 
     NSError *error = nil;
-    NSData *jsonObject = [NSJSONSerialization dataWithJSONObject:jsonDict
-                                                         options:NSJSONWritingPrettyPrinted
-                                                           error:&error];
-    // BOOL success = [jsonObject writeToFile:path options:NSUTF8StringEncoding error:&error];
+    NSData *jsonObject = [NSJSONSerialization dataWithJSONObject:jsonDict options:opt error:&error];
     //NSLog(@"Line %d, JSON data:%@", __LINE__, jsonObject);
     
     NSString *jsonStr = [[NSString alloc] initWithData:jsonObject encoding:NSUTF8StringEncoding];
-    NSLog(@"Line %d, JSON string:\n%@", __LINE__, jsonStr);
+    NSLog(@"Line %d, %lu, JSON string:\n%@", __LINE__, (unsigned long)jsonStr.length, jsonStr);
 
     [self sendToServer:jsonStr];
 }
