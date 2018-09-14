@@ -16,7 +16,6 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
-    [[NSUserDefaults standardUserDefaults] synchronize];
 #ifdef DEBUG
     NSDictionary *d = [[NSBundle mainBundle] infoDictionary];
     NSString *bundleIdentifier = [d objectForKey:@"CFBundleIdentifier"];

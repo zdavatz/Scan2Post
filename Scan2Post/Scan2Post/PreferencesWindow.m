@@ -33,7 +33,7 @@
 {
     NSLog(@"%s", __FUNCTION__);
 
-#if 0   // now done via bindings
+#if 1   // now done via bindings
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setValue:self.serverUrlTextField.stringValue forKey:@(KEY_DEFAULTS_SERVER)];
     [defaults setValue:self.usernameTextField.stringValue forKey:@(KEY_DEFAULTS_USER)];

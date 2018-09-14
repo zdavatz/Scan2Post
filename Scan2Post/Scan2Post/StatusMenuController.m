@@ -73,6 +73,9 @@
 
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 
+    // TODO: make sure that user and password are not nil
+    // otherwise we get an empty jsonDict
+
     // Prepare JSON object
     NSDictionary *jsonDict = [NSDictionary dictionaryWithObjectsAndKeys:
                               [defaults stringForKey:@(KEY_DEFAULTS_USER)], @(KEY_JSON_USER),
