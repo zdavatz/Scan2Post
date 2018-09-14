@@ -41,7 +41,7 @@
 #ifdef WITH_BIRTH_DATE_AS_STRING
     NSString *birthDate;
 #else
-    int birthDate;
+    unsigned long birthDate;
 #endif
 
 #ifdef WITH_GENDER_AS_STRING
@@ -55,7 +55,7 @@
 #ifdef WITH_EXPIRY_DATE_AS_STRING
     NSString *expiryDate;
 #else
-    int expiryDate;
+    unsigned long expiryDate;
 #endif
 
     NSString *insuredPersonNumber;

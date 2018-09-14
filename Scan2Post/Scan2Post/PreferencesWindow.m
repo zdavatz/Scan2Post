@@ -33,7 +33,12 @@
 {
     NSLog(@"%s", __FUNCTION__);
 
-#if 1   // now done via bindings
+#if 1
+    // Now done via bindings, but it's not very reliable.
+    // Force a synchronize to make sure it's updated.
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults synchronize];
+#else
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setValue:self.serverUrlTextField.stringValue forKey:@(KEY_DEFAULTS_SERVER)];
     [defaults setValue:self.usernameTextField.stringValue forKey:@(KEY_DEFAULTS_USER)];

@@ -11,7 +11,7 @@
 
 @interface HealthCard ()
 - (NSDate *) stringToDate:(NSString *)dateString;
-- (int) stringToUnixTimeStamp:(NSString *)dateString;
+- (unsigned long) stringToJavaTimeStamp:(NSString *)dateString;
 @end
 
 @implementation HealthCard
@@ -25,11 +25,11 @@
     return [dateFormat dateFromString:dateString];
 }
 
-- (int) stringToJavaTimeStamp:(NSString *)dateString
+- (unsigned long) stringToJavaTimeStamp:(NSString *)dateString
 {
     NSDate *ed = [self stringToDate:dateString];
     int unixTimestamp = (int)[ed timeIntervalSince1970];
-    int javaTimestamp_ms = unixTimestamp*1000;
+    unsigned long javaTimestamp_ms = unixTimestamp*1000L;
     return javaTimestamp_ms;
 }
 
@@ -241,7 +241,7 @@
 #ifdef WITH_BIRTH_DATE_AS_STRING
                                            self->birthDate,    @(KEY_CARD_BIRTHDATE),
 #else
-                                           [NSNumber numberWithInt:self->birthDate], @(KEY_CARD_BIRTHDATE),
+                                           [NSNumber numberWithUnsignedLong:self->birthDate], @(KEY_CARD_BIRTHDATE),
 #endif
 
 #ifdef WITH_GENDER_AS_STRING
@@ -251,7 +251,7 @@
 #endif
                                            self->cardHolderID, @(KEY_CARD_AVS),
                                         nil];
-
+              
               NSDictionary *institution = [NSDictionary dictionaryWithObjectsAndKeys:
                                          self->institutionID, @(KEY_JSON_CARD_ADMIN_INS_ID),
                                          self->institutionName, @(KEY_JSON_CARD_ADMIN_INS_NAME),
@@ -261,7 +261,7 @@
 #ifdef WITH_EXPIRY_DATE_AS_STRING
                                          self->expiryDate, @(KEY_CARD_EXPIRY),
 #else
-                                         [NSNumber numberWithInt:self->expiryDate], @(KEY_CARD_EXPIRY),
+                                         [NSNumber numberWithUnsignedLong:self->expiryDate], @(KEY_CARD_EXPIRY),
 #endif
                                          self->insuredPersonNumber, @(KEY_CARD_NUMBER),
                                          institution, @(KEY_JSON_CARD_ADMIN_INS),
