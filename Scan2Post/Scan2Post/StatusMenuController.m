@@ -91,7 +91,9 @@
     //NSLog(@"Line %d, JSON data:%@", __LINE__, jsonObject);
     
     NSString *jsonStr = [[NSString alloc] initWithData:jsonObject encoding:NSUTF8StringEncoding];
+#ifdef DEBUG
     NSLog(@"Line %d, %lu, JSON string:\n%@", __LINE__, (unsigned long)jsonStr.length, jsonStr);
+#endif
 
     [self sendToServer:jsonStr];
 }

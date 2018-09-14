@@ -14,7 +14,15 @@
 
 @implementation AppDelegate
 
-- (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
+- (void)applicationDidFinishLaunching:(NSNotification *)aNotification
+{
+#ifdef DEBUG
+    NSDictionary *d = [[NSBundle mainBundle] infoDictionary];
+    NSString *bundleIdentifier = [d objectForKey:@"CFBundleIdentifier"];
+    NSLog(@"Defaults file:\n\t%@/Preferences/%@.plist",
+          NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES).firstObject,
+          bundleIdentifier);
+#endif
 }
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification {
