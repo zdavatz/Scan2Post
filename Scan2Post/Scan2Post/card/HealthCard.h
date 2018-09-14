@@ -23,7 +23,7 @@
 #define KEY_JSON_PASSWORD       "password"
 #define KEY_JSON_CARD           "insuranceCard"
 #define KEY_JSON_CARD_ID        "identificationData"
-#define KEY_JSON_CARD_ADMIN     "administrativeData"
+#define KEY_JSON_CARD_ADMIN     "administrationData"
 #define KEY_JSON_CARD_ADMIN_INS         "insurance"
 #define KEY_JSON_CARD_ADMIN_INS_ID      "id"
 #define KEY_JSON_CARD_ADMIN_INS_NAME    "name"
