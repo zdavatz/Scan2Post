@@ -25,10 +25,12 @@
     return [dateFormat dateFromString:dateString];
 }
 
-- (int) stringToUnixTimeStamp:(NSString *)dateString
+- (int) stringToJavaTimeStamp:(NSString *)dateString
 {
     NSDate *ed = [self stringToDate:dateString];
-    return (int)[ed timeIntervalSince1970];
+    int unixTimestamp = (int)[ed timeIntervalSince1970];
+    int javaTimestamp_ms = unixTimestamp*1000;
+    return javaTimestamp_ms;
 }
 
 - (uint8_t) parseTLV:(NSData *)data
@@ -68,7 +70,7 @@
                 //NSLog(@"DOB dd.mm.yyyy <%@>", birthDate);
             }
 #else
-            birthDate = [self stringToUnixTimeStamp:s];
+            birthDate = [self stringToJavaTimeStamp:s];
 #endif
             break;
             
@@ -120,7 +122,7 @@
             //NSLog(@"ExpiryDate yyyyMMdd <%@>", expiryDate);
 #else
             s = [[NSString alloc] initWithData:value encoding:NSUTF8StringEncoding];
-            expiryDate = [self stringToUnixTimeStamp:s];
+            expiryDate = [self stringToJavaTimeStamp:s];
             //NSLog(@"ExpiryDate time stamp:%i", expiryDate);
 #endif
             break;
