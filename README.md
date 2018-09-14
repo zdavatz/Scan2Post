@@ -30,7 +30,7 @@
 "administrationData":{"insurance":{"id":"65.92.5","name":"65.91.50"},"cardNumber":"65.93.20","expiryDate":65.94.8}
 }}
 ```
-1. All dates set to UNIX timestamp and mmdd set to 0 (zero).
+1. All dates set to UNIX timestamp and mmdd set to 0 (zero) and milliseconds also set to 0 (zero).
 2. [Swiss Insurance Card Reference](https://github.com/zdavatz/amiko-osx/files/2018228/Implementierungsanleitung.fur.die.Versichertenkarte.nach.eCH-0064.der.SASIS.AG.pdf).
 3. [HTTP Server useful for testing](https://gist.github.com/dtchepak/13b53eef9dc6b65ae1ad)
 4. Password can be used for Server-Side Authentication.
