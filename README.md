@@ -1,6 +1,7 @@
 # Scan2Post
 * Scan a Swiss Health Insurance card and create a HTTP(S)-Post request.
 * Supported Scanner is [PX-8935-919](http://www.xystec.info/USB-Chipkartenleser-HBCI-faehig-Smart-Car-PX-8935-919.shtml) from Xystec.
+* Download from the [macOS Store](https://itunes.apple.com/us/app/scan2post/id1435130536?mt=12).
 
 ## Features
 1. Scan2Post has to be able to register in Start-Up Objects in the Settings. 
