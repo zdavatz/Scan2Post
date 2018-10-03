@@ -1,4 +1,5 @@
 # Scan2Post
+* Use WebSockets with a Username to Push Information from the card to the server. No polling needed.
 * Scan a Swiss Health Insurance card and create a HTTP(S)-Post request.
 * Supported Scanner is [PX-8935-919](http://www.xystec.info/USB-Chipkartenleser-HBCI-faehig-Smart-Car-PX-8935-919.shtml) from Xystec.
 * Download from the [macOS Store](https://itunes.apple.com/us/app/scan2post/id1435130536?mt=12).
