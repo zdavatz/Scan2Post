@@ -8,6 +8,8 @@
 
 #import <Cocoa/Cocoa.h>
 
+#define INITIAL_SERVER_URL          "https://elstage.pharmedsolutions.ch/api/1.0/insurance-card"
+
 #define KEY_DEFAULTS_SERVER         "serverUrl"
 #define KEY_DEFAULTS_USER           "username"
 #define KEY_DEFAULTS_PASSWORD       "password"

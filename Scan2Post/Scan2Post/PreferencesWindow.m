@@ -33,12 +33,14 @@
 {
     NSLog(@"%s", __FUNCTION__);
 
-#if 1
+#if 0
+    // This way works for macOS 10.14 but not for macOS 10.13
     // Now done via bindings, but it's not very reliable.
     // Force a synchronize to make sure it's updated.
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults synchronize];
 #else
+    // This way works both for macOS 10.14 and for macOS 10.13
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setValue:self.serverUrlTextField.stringValue forKey:@(KEY_DEFAULTS_SERVER)];
     [defaults setValue:self.usernameTextField.stringValue forKey:@(KEY_DEFAULTS_USER)];

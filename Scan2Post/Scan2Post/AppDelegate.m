@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "PreferencesWindow.h"
 
 @interface AppDelegate ()
 
@@ -23,6 +24,12 @@
           NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES).firstObject,
           bundleIdentifier);
 #endif
+    
+    NSDictionary *initialValues = [NSDictionary dictionaryWithObjectsAndKeys:
+                                 @(INITIAL_SERVER_URL), @(KEY_DEFAULTS_SERVER),
+                                 nil];
+    
+    [[NSUserDefaults standardUserDefaults] registerDefaults:initialValues];
 }
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification {
